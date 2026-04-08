@@ -2,11 +2,11 @@
 
 /* CSS Custom Properties */
 :root {
-  --color-bg: #0a0a0a;
-  --color-text: #f5f0eb;
-  --color-accent: #c9a96e;
-  --font-heading: 'Georgia', serif;
-  --font-body: 'Helvetica Neue', Arial, sans-serif;
+  --color-bg: #faf7f0;
+  --color-text: #000000;
+  --color-accent: #2b6bac;
+  --font-heading: 'Ultra', serif;
+  --font-body: 'Poppins', sans-serif;
   --transition-slow: 0.8s cubic-bezier(0.77, 0, 0.175, 1);
 }
 
@@ -15,13 +15,16 @@
 }
 
 html {
-  font-family: var(--font-body);
-  background-color: var(--color-bg);
-  color: var(--color-text);
+  font-size: 62.5%;
   scroll-behavior: smooth;
 }
 
 body {
+  font-size: 1.6rem;
+  font-family: var(--font-body);
+  font-weight: 500;
+  background-color: var(--color-bg);
+  color: var(--color-text);
   margin: 0;
   padding: 0;
   overflow-x: hidden;

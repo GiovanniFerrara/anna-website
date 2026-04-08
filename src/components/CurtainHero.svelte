@@ -107,7 +107,7 @@
 
   /* Title */
   .landing__title {
-    font-family: 'Ultra', 'Georgia', serif;
+    font-family: 'Ultra', serif;
     font-weight: 500;
     position: absolute;
     font-size: 10rem;
