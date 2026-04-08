@@ -1,0 +1,28 @@
+@import 'normalize.css';
+
+/* CSS Custom Properties */
+:root {
+  --color-bg: #0a0a0a;
+  --color-text: #f5f0eb;
+  --color-accent: #c9a96e;
+  --font-heading: 'Georgia', serif;
+  --font-body: 'Helvetica Neue', Arial, sans-serif;
+  --transition-slow: 0.8s cubic-bezier(0.77, 0, 0.175, 1);
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html {
+  font-family: var(--font-body);
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
