@@ -17,7 +17,7 @@
 ---
 
 ## 🔑 Requisiti fondamentali
-1. **Framework**: **Svelte + Vite** + TypeScript (NON React, NON webpack)
+1. **Framework**: **SvelteKit** + TypeScript (NON React, NON Vite standalone, NON webpack)
 2. **CSS**: normalize.css installato, CSS custom properties per colori/spacing
 3. **Responsive**: Mobile (375px), Tablet (768px), Desktop (1440px) — testare SEMPRE
 4. **Accessibilità**: aria labels, contrasti, semantica HTML
