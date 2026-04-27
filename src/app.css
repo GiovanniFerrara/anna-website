@@ -52,10 +52,27 @@ body {
 .landing__banner-wrap .landing__picture-wrap-1 {
   position: relative;
   flex: 1 1 490.76px;
+  z-index: 2;
 }
 .landing__banner-wrap .landing__picture-wrap-2 {
   position: relative;
   flex: 1 1 368.2px;
+  z-index: 2;
+}
+.curtain-reveal-text {
+  position: absolute;
+  bottom: 20%;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 10;
+  font-family: 'Kapakana', serif;
+  font-weight: 400;
+  /* font-size driven by Svelte reactive revealFontSizePx */
+  color: #2b6bac;
+  text-align: center;
+  white-space: nowrap;
+  pointer-events: none;
+  text-shadow: -1px 1.5px black;
 }
 .landing__banner-wrap .landing__picture-1 {
   width: 100%;
@@ -113,6 +130,9 @@ body {
   }
 }
 @media screen and (max-width: 1200px) {
+  .curtain-reveal-text {
+    font-size: 5.5rem;
+  }
   .landing__title {
     top: 12rem;
     font-size: 7.6923076923rem;
@@ -123,6 +143,9 @@ body {
   }
 }
 @media screen and (max-width: 992px) {
+  .curtain-reveal-text {
+    font-size: 4.5rem;
+  }
   .landing__title {
     top: 13rem;
     font-size: 6.6666666667rem;
@@ -133,6 +156,11 @@ body {
   }
 }
 @media screen and (max-width: 768px) {
+  .curtain-reveal-text {
+    font-size: 3.5rem;
+    white-space: normal;
+    width: 80%;
+  }
   .landing {
     margin-top: 0;
   }
@@ -161,6 +189,9 @@ body {
   }
 }
 @media screen and (max-width: 550px) {
+  .curtain-reveal-text {
+    font-size: 2.8rem;
+  }
   .landing__banner-wrap .landing__parent-wrap {
     flex: 0 0 180%;
   }
@@ -172,6 +203,9 @@ body {
   }
 }
 @media screen and (max-width: 400px) {
+  .curtain-reveal-text {
+    font-size: 2.2rem;
+  }
   .landing__banner-wrap .landing__parent-wrap {
     flex: 0 0 210%;
   }

@@ -1,18 +1,18 @@
 <script lang="ts">
-  import { onMount } from 'svelte'
-
-  let scrollY = 0
-  let windowWidth = 0
+  let scrollY = 0;
+  let windowWidth = 0;
 
   function scaleSlogan(scroll: number): number {
-    if (!scroll || scroll < 0) return 1
-    if (scroll > 500) return 0
-    return Math.pow(scroll - 0 + 0.001, -0.18)
+    if (!scroll || scroll < 0) return 1;
+    if (scroll > 500) return 0;
+    return Math.pow(scroll - 0 + 0.001, -0.18);
   }
 
-  $: titleScale = scaleSlogan(scrollY)
-  $: curtain1Left = windowWidth > 768 ? -scrollY / 1.05 : -scrollY / 3
-  $: curtain2Left = scrollY / 6
+  $: titleScale = scaleSlogan(scrollY);
+  $: curtain1Left = windowWidth > 768 ? -scrollY / 1.05 : -scrollY / 3;
+  $: curtain2Left = scrollY / 6;
+  $: openRatio = Math.min(1, Math.max(0, scrollY / 600));
+  $: revealFontSizePx = (windowWidth / 100) * (0.3 + openRatio * 8.1);
 </script>
 
 <svelte:window bind:scrollY bind:innerWidth={windowWidth} />
@@ -24,12 +24,15 @@
         <span class="landing__title-span">Hello,</span>
         <span class="landing__title-span"> I'm so happy</span>
       </p>
-      <p class="landing__title-span"> to see you here </p>
+      <p class="landing__title-span">to see you here</p>
     </div>
   </div>
 
   <div class="landing__banner-wrap">
     <div class="landing__parent-wrap">
+      <div class="curtain-reveal-text" style="font-size: {revealFontSizePx}px">
+        <p>See what's possible for you.</p>
+      </div>
       <div class="landing__picture-wrap-1">
         <img
           alt="curtain left"
@@ -49,5 +52,3 @@
     </div>
   </div>
 </div>
-
-<div style="height: 300vh;" />

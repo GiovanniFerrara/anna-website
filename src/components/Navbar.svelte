@@ -1,5 +1,7 @@
 <script lang="ts">
   let menuOpen = false
+  let scrollY = 0
+  $: active = scrollY < 150
 
   function toggle() { menuOpen = !menuOpen }
   function close() { menuOpen = false }
@@ -7,8 +9,8 @@
   const items = [
     { label: 'About Me', href: '#about' },
     { label: 'Work', href: '#split' },
-    { label: 'Manifesto', href: '#manifesto' },
     { label: 'Contacts', href: '#contacts' },
+    { label: 'Services', href: '#services' },
   ]
 
   function navigate(href: string) {
@@ -19,28 +21,29 @@
   }
 </script>
 
+<svelte:window bind:scrollY />
+
 <div class="navbar">
-  <!-- Left: lang/social placeholder (same flex space as original langSwap) -->
-  <div class="langSwap navbar--active">
-    <div class="social-icons">
-      <a href="https://pinterest.com" target="_blank" rel="noopener" aria-label="Pinterest" class="social-icons__item">
-        <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor">
-          <path d="M12 0C5.373 0 0 5.373 0 12c0 5.084 3.163 9.426 7.627 11.174-.105-.949-.2-2.405.042-3.441.218-.937 1.407-5.965 1.407-5.965s-.359-.719-.359-1.782c0-1.668.967-2.914 2.171-2.914 1.023 0 1.518.769 1.518 1.69 0 1.029-.655 2.568-.994 3.995-.283 1.194.599 2.169 1.777 2.169 2.133 0 3.772-2.249 3.772-5.495 0-2.873-2.064-4.882-5.012-4.882-3.414 0-5.418 2.561-5.418 5.207 0 1.031.397 2.138.893 2.738a.36.36 0 0 1 .083.345l-.333 1.36c-.053.22-.174.267-.402.161-1.499-.698-2.436-2.889-2.436-4.649 0-3.785 2.75-7.262 7.929-7.262 4.163 0 7.398 2.967 7.398 6.931 0 4.136-2.607 7.464-6.227 7.464-1.216 0-2.359-.632-2.75-1.378l-.748 2.853c-.271 1.043-1.002 2.35-1.492 3.146C9.57 23.812 10.763 24 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0z"/>
-        </svg>
-      </a>
-      <a href="https://linkedin.com" target="_blank" rel="noopener" aria-label="LinkedIn" class="social-icons__item">
-        <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor">
-          <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
-        </svg>
-      </a>
-    </div>
+  <!-- Left spacer (empty langSwap) — pushes social-icons toward curtain edge -->
+  <div class="langSwap" class:navbar--active={active}></div>
+
+  <p class="nav-spacer"></p>
+
+  <!-- Social icons (sibling, not inside langSwap) -->
+  <div class="social-icons">
+    <a href="https://pl.pinterest.com/ineedanicewebsite/_saved/" target="_blank" rel="noopener" aria-label="Pinterest" class="social-icons__item" class:navbar--active={active}>
+      <img src="/pinterest.png" alt="Pinterest" />
+    </a>
+    <a href="https://www.linkedin.com/in/anna-hora-59a9151a3/" target="_blank" rel="noopener" aria-label="LinkedIn" class="social-icons__item" class:navbar--active={active}>
+      <img src="/linkedin.png" alt="LinkedIn" />
+    </a>
   </div>
 
-  <!-- Center: page list -->
+  <!-- Page list -->
   <div class="page-list">
     <ul class="page-list__list">
       {#each items as item}
-        <li class="page-list__item" on:click={() => navigate(item.href)} role="button" tabindex="0" on:keydown={(e) => e.key === 'Enter' && navigate(item.href)}>
+        <li class="page-list__item" class:navbar--active={active} on:click={() => navigate(item.href)} role="button" tabindex="0" on:keydown={(e) => e.key === 'Enter' && navigate(item.href)}>
           {item.label}
         </li>
       {/each}
@@ -84,10 +87,8 @@
       </ul>
     </div>
     <div class="social-icons">
-      <a href="https://pinterest.com" target="_blank" rel="noopener" class="social-icons__item">
-        <svg viewBox="0 0 24 24" width="28" height="28" fill="currentColor">
-          <path d="M12 0C5.373 0 0 5.373 0 12c0 5.084 3.163 9.426 7.627 11.174-.105-.949-.2-2.405.042-3.441.218-.937 1.407-5.965 1.407-5.965s-.359-.719-.359-1.782c0-1.668.967-2.914 2.171-2.914 1.023 0 1.518.769 1.518 1.69 0 1.029-.655 2.568-.994 3.995-.283 1.194.599 2.169 1.777 2.169 2.133 0 3.772-2.249 3.772-5.495 0-2.873-2.064-4.882-5.012-4.882-3.414 0-5.418 2.561-5.418 5.207 0 1.031.397 2.138.893 2.738a.36.36 0 0 1 .083.345l-.333 1.36c-.053.22-.174.267-.402.161-1.499-.698-2.436-2.889-2.436-4.649 0-3.785 2.75-7.262 7.929-7.262 4.163 0 7.398 2.967 7.398 6.931 0 4.136-2.607 7.464-6.227 7.464-1.216 0-2.359-.632-2.75-1.378l-.748 2.853c-.271 1.043-1.002 2.35-1.492 3.146C9.57 23.812 10.763 24 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0z"/>
-        </svg>
+      <a href="https://pl.pinterest.com/ineedanicewebsite/_saved/" target="_blank" rel="noopener" class="social-icons__item">
+        <img src="/pinterest.png" alt="Pinterest" style="width:45px;height:45px;" />
       </a>
     </div>
   </div>
@@ -110,39 +111,52 @@
     background: transparent;
   }
 
-  .navbar .navbar--active { opacity: 1 !important; }
-  .navbar:hover :global(.page-list__item) { opacity: 1; }
-  .navbar:hover .langSwap { opacity: 1; }
-  .navbar:hover .social-icons__item { opacity: 1; }
-
-  /* langSwap / left area */
+  /* Empty left spacer — flex 1 0 28% pushes social-icons to curtain edge.
+     Mirrors .langSwap from ineedanicewebsite branch=anna (_langSwap.sass). */
   .langSwap {
-    margin: auto auto auto 0px;
+    margin: auto auto auto 0;
     flex: 1 0 28%;
     justify-content: flex-start;
     opacity: 0;
-    transition: opacity 0.4s;
-    display: flex;
-    align-items: center;
+    transition: opacity 0.4s ease;
   }
 
+  /* Tiny separator <p>, mirrors empty <p /> in original Navbar.tsx */
+  .nav-spacer { margin: 0; padding: 0; }
+
+  /* Social icons — copied from _socialIcons.sass on branch=anna.
+     Original used $l-space*1.5 (4.5rem) with 10px base = 45px. */
   .social-icons {
+    flex: 1 1 2%;
     display: flex;
-    align-items: center;
-    gap: 8px;
+    justify-content: space-between;
+    height: 45px;
+    margin: auto;
+    position: relative;
   }
 
   .social-icons__item {
+    height: 100%;
+    padding-right: 0;
+    margin-left: -10px;
+    opacity: 0;
+    transition: opacity 0.4s ease;
     color: #1a1a1a;
     display: flex;
     align-items: center;
-    opacity: 0;
-    transition: opacity 0.4s;
     text-decoration: none;
   }
+  .social-icons__item img { height: 100%; width: auto; display: block; }
   .social-icons__item:hover { opacity: 0.5 !important; }
 
-  /* page-list */
+  /* Threshold reveal: visible when class navbar--active is added (scrollY < 150)
+     or when the navbar is hovered. Matches ineedanicewebsite branch=anna. */
+  .navbar :global(.navbar--active) { opacity: 1 !important; }
+  .navbar:hover .langSwap,
+  .navbar:hover :global(.social-icons__item),
+  .navbar:hover :global(.page-list__item) { opacity: 1; }
+
+  /* Page list — wraps the items, gives flex 0 1 54% like original */
   .page-list {
     flex: 0 1 54%;
     justify-content: space-between;
@@ -153,10 +167,9 @@
   .page-list__list {
     display: flex;
     justify-content: space-between;
-    margin-left: -2px;
     list-style: none;
     padding: 0;
-    margin: 0;
+    margin: 0 0 0 -2px;
   }
 
   .page-list__item {
