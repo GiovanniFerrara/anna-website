@@ -8,6 +8,7 @@
   --font-heading: 'Kapakana', serif;
   --font-body: 'Poppins', sans-serif;
   --transition-slow: 0.8s cubic-bezier(0.77, 0, 0.175, 1);
+  --page-gutter: clamp(24px, 5vw, 80px);
 }
 
 *, *::before, *::after {
@@ -79,6 +80,7 @@ body {
   display: flex;
   justify-content: flex-end;
   margin-top: 6.5rem;
+  padding-right: var(--page-gutter);
   top: -1500px;
   animation: fromUp 0.6s ease-in-out forwards 0.5s;
 }

@@ -28,11 +28,11 @@
 <style>
   .split {
     display: flex;
-    height: 100vh;
-    width: 97%;
+    gap: 12px;
+    height: 80vh;
     margin-top: 17px;
-    margin-left: auto;
-    margin-right: auto;
+    padding-left: var(--page-gutter);
+    padding-right: var(--page-gutter);
   }
 
   .split__side {
@@ -49,18 +49,17 @@
   }
 
   .split__side--art {
-    background-image: url('/funeral-autumn.jpeg');
+    background-image: url("/funeral-autumn.jpeg");
     background-size: cover;
     background-position: center;
   }
 
   .split__side--food {
     background-color: #ebe8e3;
-    background-image: url('/table-orange.jpg');
+    background-image: url("/table-orange.jpg");
     background-size: cover;
     background-position: center;
   }
-
 
   .split__label {
     display: flex;
@@ -95,18 +94,6 @@
     transform: translateY(0);
   }
 
-  /* Divider line */
-  .split::after {
-    content: "";
-    position: absolute;
-    left: 50%;
-    top: 10%;
-    height: 80%;
-    width: 1px;
-    background-color: #ccc;
-    pointer-events: none;
-  }
-
   .split {
     position: relative;
   }
@@ -118,7 +105,7 @@
     .split__side {
       flex: 1;
     }
-.split::after {
+    .split::after {
       left: 10%;
       top: 50%;
       height: 1px;

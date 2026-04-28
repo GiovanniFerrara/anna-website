@@ -104,8 +104,8 @@
     z-index: 200;
     display: flex;
     flex-direction: row;
-    padding-left: 1.5%;
-    padding-right: 1.5%;
+    padding-left: 0;
+    padding-right: var(--page-gutter);
     height: 6.5rem;
     transition: 0.4s;
     background: transparent;
