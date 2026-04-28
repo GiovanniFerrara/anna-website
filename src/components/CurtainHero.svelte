@@ -11,8 +11,9 @@
   $: titleScale = scaleSlogan(scrollY);
   $: curtain1Left = windowWidth > 768 ? -scrollY / 1.05 : -scrollY / 3;
   $: curtain2Left = scrollY / 6;
-  $: openRatio = Math.min(1, Math.max(0, scrollY / 600));
-  $: revealFontSizePx = (windowWidth / 100) * (0.3 + openRatio * 8.1);
+  // subtitle: starts invisible, grows to 10rem and descends as user scrolls to 500
+  $: subtitleFontSizeRem = 10 * Math.min(1, Math.max(0, scrollY / 500));
+  $: subtitleTranslateY = scrollY * 0.6;
 </script>
 
 <svelte:window bind:scrollY bind:innerWidth={windowWidth} />
@@ -24,15 +25,24 @@
         <span class="landing__title-span">Hello,</span>
         <span class="landing__title-span"> I'm so happy</span>
       </p>
-      <p class="landing__title-span">to see you here</p>
+      <p class="landing__title-span"> to see you here!</p>
+    </div>
+  </div>
+
+  <div
+    class="landing__subtitle-wrap"
+    style="transform: translateY({subtitleTranslateY}px)"
+  >
+    <div
+      class="landing__subtitle-reveal"
+      style="font-size: {subtitleFontSizeRem}rem"
+    >
+      <span class="landing__title-span">See what's possible for you.</span>
     </div>
   </div>
 
   <div class="landing__banner-wrap">
     <div class="landing__parent-wrap">
-      <div class="curtain-reveal-text" style="font-size: {revealFontSizePx}px">
-        <p>See what's possible for you.</p>
-      </div>
       <div class="landing__picture-wrap-1">
         <img
           alt="curtain left"
