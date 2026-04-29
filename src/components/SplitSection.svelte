@@ -4,35 +4,58 @@
 </script>
 
 <div class="split">
-  <button
-    class="split__side split__side--art"
-    on:click={() => dispatch("select", "art")}
-  >
-    <div class="split__label">
-      <span class="split__title">Art Projects</span>
-      <span class="split__cta">View work →</span>
+  <div class="split__col">
+    <hr class="hr--custom split__hr" data-content="Food Art" />
+    <button
+      class="split__side split__side--art"
+      on:click={() => dispatch("select", "art")}
+      aria-label="View art projects"
+    ></button>
+    <div class="split__caption">
+      <p class="split__caption-content">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit.<br />
+        Brief: Sed do eiusmod tempor incididunt.
+      </p>
     </div>
-  </button>
+  </div>
 
-  <button
-    class="split__side split__side--food"
-    on:click={() => dispatch("select", "food")}
-  >
-    <div class="split__label">
-      <span class="split__title">Food Design</span>
-      <span class="split__cta">View work →</span>
+  <div class="split__col">
+    <hr class="hr--custom split__hr" data-content="Food Design" />
+    <button
+      class="split__side split__side--food"
+      on:click={() => dispatch("select", "food")}
+      aria-label="View food design projects"
+    ></button>
+    <div class="split__caption">
+      <p class="split__caption-content">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit.<br />
+        Brief: Ut labore et dolore magna aliqua.
+      </p>
     </div>
-  </button>
+  </div>
 </div>
 
 <style>
   .split {
     display: flex;
-    gap: 12px;
-    height: 80vh;
-    margin-top: 17px;
+    gap: 92px;
+    height: 140vh;
+    margin-top: calc(var(--page-gutter));
+    padding-bottom: calc(var(--page-gutter));
     padding-left: var(--page-gutter);
     padding-right: var(--page-gutter);
+    position: relative;
+  }
+
+  .split__col {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+  }
+
+  .split__hr {
+    margin-bottom: calc(var(--page-gutter));
   }
 
   .split__side {
@@ -48,68 +71,50 @@
     overflow: hidden;
   }
 
-  .split__side--art {
-    background-image: url("/funeral-autumn.jpeg");
+  .split__side::before {
+    content: "";
+    position: absolute;
+    inset: 0;
     background-size: cover;
     background-position: center;
+    transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    will-change: transform;
+  }
+
+  .split__side--art::before {
+    background-image: url("/funeral-autumn.jpeg");
   }
 
   .split__side--food {
     background-color: #ebe8e3;
+  }
+  .split__side--food::before {
     background-image: url("/table-orange.jpg");
-    background-size: cover;
-    background-position: center;
   }
 
-  .split__label {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 12px;
-    pointer-events: none;
+  .split__side:hover::before {
+    transform: scale(1.15);
   }
 
-  .split__title {
+  /* Caption — copied pattern from old portfolioCard (branch=anna) */
+  .split__caption {
+    margin-top: 4rem;
+  }
+  .split__caption-content {
+    border-top: 2px solid black;
+    border-bottom: 2px solid black;
+    padding-top: 1.2rem;
     font-family: "Poppins", sans-serif;
-    font-size: clamp(1.5rem, 3vw, 2.5rem);
-    font-weight: 500;
-    letter-spacing: 0.04em;
-    text-transform: uppercase;
-    color: #1a1a1a;
-  }
-
-  .split__cta {
-    font-size: 0.9rem;
-    letter-spacing: 0.15em;
-    color: #666;
-    opacity: 0;
-    transform: translateY(8px);
-    transition:
-      opacity 0.3s ease,
-      transform 0.3s ease;
-  }
-
-  .split__side:hover .split__cta {
-    opacity: 1;
-    transform: translateY(0);
-  }
-
-  .split {
-    position: relative;
+    font-size: 1.5rem;
+    line-height: 1.5;
+    min-height: 110px;
+    margin: 0;
+    padding-bottom: 1.2rem;
   }
 
   @media (max-width: 768px) {
     .split {
       flex-direction: column;
-    }
-    .split__side {
-      flex: 1;
-    }
-    .split::after {
-      left: 10%;
-      top: 50%;
-      height: 1px;
-      width: 80%;
     }
   }
 </style>

@@ -37,11 +37,6 @@
     <CurtainHero />
   </section>
 
-  <!-- Section 1b: About header (hr--custom, copied from ineedanicewebsite branch=anna) -->
-  <section id="about" class="about-header">
-    <hr class="hr--custom" data-content="I am Anna Hora, a multidisciplinary designer who is passionate about colors, fonts and pixels" />
-  </section>
-
   <!-- Section 2: 50/50 Split -->
   <section id="split">
     <SplitSection on:select={(e) => selectCategory(e.detail)} />

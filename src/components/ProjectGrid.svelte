@@ -1,27 +1,67 @@
 <script lang="ts">
-  import { createEventDispatcher } from 'svelte'
-  export let category: 'art' | 'food'
-  const dispatch = createEventDispatcher()
+  import { createEventDispatcher } from "svelte";
+  export let category: "art" | "food";
+  const dispatch = createEventDispatcher();
 
   // Placeholder projects — Anna will replace with real images
   const artProjects = [
-    { id: 1, title: 'Project 01', thumb: 'https://placehold.co/600x800/e8e0d6/666?text=Art+01' },
-    { id: 2, title: 'Project 02', thumb: 'https://placehold.co/600x800/ddd8cf/666?text=Art+02' },
-    { id: 3, title: 'Project 03', thumb: 'https://placehold.co/600x800/e8e0d6/666?text=Art+03' },
-    { id: 4, title: 'Project 04', thumb: 'https://placehold.co/600x800/ddd8cf/666?text=Art+04' },
-    { id: 5, title: 'Project 05', thumb: 'https://placehold.co/600x800/e8e0d6/666?text=Art+05' },
-    { id: 6, title: 'Project 06', thumb: 'https://placehold.co/600x800/ddd8cf/666?text=Art+06' },
-  ]
+    {
+      id: 1,
+      title: "Project 01",
+      thumb: "https://placehold.co/600x800/e8e0d6/666?text=Art+01",
+    },
+    {
+      id: 2,
+      title: "Project 02",
+      thumb: "https://placehold.co/600x800/ddd8cf/666?text=Art+02",
+    },
+    {
+      id: 3,
+      title: "Project 03",
+      thumb: "https://placehold.co/600x800/e8e0d6/666?text=Art+03",
+    },
+    {
+      id: 4,
+      title: "Project 04",
+      thumb: "https://placehold.co/600x800/ddd8cf/666?text=Art+04",
+    },
+    {
+      id: 5,
+      title: "Project 05",
+      thumb: "https://placehold.co/600x800/e8e0d6/666?text=Art+05",
+    },
+    {
+      id: 6,
+      title: "Project 06",
+      thumb: "https://placehold.co/600x800/ddd8cf/666?text=Art+06",
+    },
+  ];
 
   const foodProjects = [
-    { id: 1, title: 'Project 01', thumb: 'https://placehold.co/600x800/f0ebe3/666?text=Food+01' },
-    { id: 2, title: 'Project 02', thumb: 'https://placehold.co/600x800/e5dfd6/666?text=Food+02' },
-    { id: 3, title: 'Project 03', thumb: 'https://placehold.co/600x800/f0ebe3/666?text=Food+03' },
-    { id: 4, title: 'Project 04', thumb: 'https://placehold.co/600x800/e5dfd6/666?text=Food+04' },
-  ]
+    {
+      id: 1,
+      title: "Project 01",
+      thumb: "https://placehold.co/600x800/f0ebe3/666?text=Food+01",
+    },
+    {
+      id: 2,
+      title: "Project 02",
+      thumb: "https://placehold.co/600x800/e5dfd6/666?text=Food+02",
+    },
+    {
+      id: 3,
+      title: "Project 03",
+      thumb: "https://placehold.co/600x800/f0ebe3/666?text=Food+03",
+    },
+    {
+      id: 4,
+      title: "Project 04",
+      thumb: "https://placehold.co/600x800/e5dfd6/666?text=Food+04",
+    },
+  ];
 
-  $: projects = category === 'art' ? artProjects : foodProjects
-  $: label = category === 'art' ? 'Art Projects' : 'Food Design'
+  $: projects = category === "art" ? artProjects : foodProjects;
+  $: label = category === "art" ? "Food Art" : "Food Design";
 </script>
 
 <div class="grid-section">
@@ -31,9 +71,17 @@
 
   <div class="grid-section__grid">
     {#each projects as project}
-      <button class="grid-item" on:click={() => dispatch('select', { id: project.id, category })}>
+      <button
+        class="grid-item"
+        on:click={() => dispatch("select", { id: project.id, category })}
+      >
         <div class="grid-item__img-wrap">
-          <img src={project.thumb} alt={project.title} class="grid-item__img" loading="lazy" />
+          <img
+            src={project.thumb}
+            alt={project.title}
+            class="grid-item__img"
+            loading="lazy"
+          />
         </div>
         <span class="grid-item__label">{project.title}</span>
       </button>
