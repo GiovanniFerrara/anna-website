@@ -37,7 +37,8 @@
     border-top: 2px solid #000;
     border-bottom: 2px solid #000;
     margin-bottom: 90px;
-    padding-top: 4.6rem;
+    padding-top: 11rem;
+    padding-bottom: 2rem;
     padding-left: var(--page-gutter);
     padding-right: var(--page-gutter);
     background: #faf7f0;
@@ -71,13 +72,18 @@
   }
 
   .footer__center {
+    position: relative;
     text-align: center;
     font-size: 2.2rem;
   }
   .footer__center p {
-    margin: 0.4em 0;
+    margin: 0.85em 0;
   }
   .footer__logo {
+    position: absolute;
+    left: 50%;
+    bottom: calc(100% + 0.6rem);
+    transform: translateX(-50%);
     width: 80px;
   }
 
