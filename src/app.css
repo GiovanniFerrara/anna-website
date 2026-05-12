@@ -93,11 +93,15 @@ body {
   position: relative;
   flex: 1 1 490.76px;
   z-index: 2;
+  overflow: hidden;
+  border-radius: 12px 0 0 12px;
 }
 .landing__banner-wrap .landing__picture-wrap-2 {
   position: relative;
   flex: 1 1 368.2px;
   z-index: 2;
+  overflow: hidden;
+  border-radius: 0 12px 12px 0;
 }
 .curtain-reveal-text {
   position: absolute;

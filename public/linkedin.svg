@@ -1,0 +1,4 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <rect x="12" y="12" width="76" height="76" rx="14" fill="none" stroke="currentColor" stroke-width="4.2"/>
+  <path fill="currentColor" d="M30 41h8.5v29H30zM34.25 27.5a4.75 4.75 0 1 1 0 9.5 4.75 4.75 0 0 1 0-9.5zM44 41h8.1v4h.12c1.13-2.05 3.9-4.21 8.03-4.21 8.6 0 10.18 5.32 10.18 12.24V70h-8.5V54.92c0-3.6-.07-8.23-5.04-8.23-5.05 0-5.82 3.93-5.82 7.97V70H44z"/>
+</svg>

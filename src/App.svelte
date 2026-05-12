@@ -5,7 +5,8 @@
   import SplitSection from './components/SplitSection.svelte'
   import ProjectGrid from './components/ProjectGrid.svelte'
   import ProjectDetail from './components/ProjectDetail.svelte'
-  import Manifesto from './components/Manifesto.svelte'
+  import Footer from './components/Footer.svelte'
+  import Services from './components/Services.svelte'
 
   let selectedCategory: 'art' | 'food' | null = null
   let selectedProject: { id: number; category: string } | null = null
@@ -56,8 +57,9 @@
     </section>
   {/if}
 
-  <!-- Section 5: Manifesto -->
-  <section id="manifesto">
-    <Manifesto />
-  </section>
+  <!-- Section 5: Services -->
+  <Services />
+
+  <!-- Footer -->
+  <Footer />
 </main>

@@ -41,7 +41,7 @@
     gap: 92px;
     height: 140vh;
     margin-top: calc(var(--page-gutter));
-    padding-bottom: calc(var(--page-gutter));
+    padding-bottom: calc(var(--page-gutter) - 30px);
     padding-left: var(--page-gutter);
     padding-right: var(--page-gutter);
     position: relative;
@@ -69,6 +69,7 @@
     padding: 0;
     position: relative;
     overflow: hidden;
+    border-radius: 12px;
   }
 
   .split__side::before {
@@ -82,7 +83,7 @@
   }
 
   .split__side--art::before {
-    background-image: url("/funeral-autumn.jpeg");
+    background-image: url("/funeral-autumn2.jpeg");
   }
 
   .split__side--food {

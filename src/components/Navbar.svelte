@@ -1,23 +1,27 @@
 <script lang="ts">
-  let menuOpen = false
-  let scrollY = 0
-  $: active = scrollY < 150
+  let menuOpen = false;
+  let scrollY = 0;
+  $: active = scrollY < 150;
 
-  function toggle() { menuOpen = !menuOpen }
-  function close() { menuOpen = false }
+  function toggle() {
+    menuOpen = !menuOpen;
+  }
+  function close() {
+    menuOpen = false;
+  }
 
   const items = [
-    { label: 'About Me', href: '#about' },
-    { label: 'Work', href: '#split' },
-    { label: 'Contacts', href: '#contacts' },
-    { label: 'Services', href: '#services' },
-  ]
+    { label: "About Me", href: "#about" },
+    { label: "Work", href: "#split" },
+    { label: "Contacts", href: "#contacts" },
+    { label: "Services", href: "#services" },
+  ];
 
   function navigate(href: string) {
-    close()
+    close();
     setTimeout(() => {
-      document.querySelector(href)?.scrollIntoView({ behavior: 'smooth' })
-    }, 320)
+      document.querySelector(href)?.scrollIntoView({ behavior: "smooth" });
+    }, 320);
   }
 </script>
 
@@ -31,11 +35,25 @@
 
   <!-- Social icons (sibling, not inside langSwap) -->
   <div class="social-icons">
-    <a href="https://pl.pinterest.com/ineedanicewebsite/_saved/" target="_blank" rel="noopener" aria-label="Pinterest" class="social-icons__item" class:navbar--active={active}>
-      <img src="/pinterest.png" alt="Pinterest" />
+    <a
+      href="https://www.instagram.com/around.the.tongue/"
+      target="_blank"
+      rel="noopener"
+      aria-label="Instagram"
+      class="social-icons__item"
+      class:navbar--active={active}
+    >
+      <img src="/instagram.svg" alt="Instagram" />
     </a>
-    <a href="https://www.linkedin.com/in/anna-hora-59a9151a3/" target="_blank" rel="noopener" aria-label="LinkedIn" class="social-icons__item" class:navbar--active={active}>
-      <img src="/linkedin.png" alt="LinkedIn" />
+    <a
+      href="https://www.linkedin.com/in/anna-hora-59a9151a3/"
+      target="_blank"
+      rel="noopener"
+      aria-label="LinkedIn"
+      class="social-icons__item"
+      class:navbar--active={active}
+    >
+      <img src="/linkedin.svg" alt="LinkedIn" />
     </a>
   </div>
 
@@ -43,7 +61,14 @@
   <div class="page-list">
     <ul class="page-list__list">
       {#each items as item}
-        <li class="page-list__item" class:navbar--active={active} on:click={() => navigate(item.href)} role="button" tabindex="0" on:keydown={(e) => e.key === 'Enter' && navigate(item.href)}>
+        <li
+          class="page-list__item"
+          class:navbar--active={active}
+          on:click={() => navigate(item.href)}
+          role="button"
+          tabindex="0"
+          on:keydown={(e) => e.key === "Enter" && navigate(item.href)}
+        >
           {item.label}
         </li>
       {/each}
@@ -52,7 +77,13 @@
 
   <!-- Right: burger icon -->
   <div class="icon">
-    <button class="menu-icon" class:opened={menuOpen} class:closed={!menuOpen} on:click={toggle} aria-label="Menu">
+    <button
+      class="menu-icon"
+      class:opened={menuOpen}
+      class:closed={!menuOpen}
+      on:click={toggle}
+      aria-label="Menu"
+    >
       <div class="bar bar-1"></div>
       <div class="bar bar-2"></div>
     </button>
@@ -67,28 +98,91 @@
       <div class="bar bar-2"></div>
     </button>
     <div class="menu__cursor">
-      <svg viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg" width="80" height="80">
-        <path d="M24 12L96 60L60 66L48 102L24 12Z" fill="#1a1a1a"/>
-        <line x1="60" y1="3" x2="60" y2="18" stroke="#1a1a1a" stroke-width="3"/>
-        <line x1="105" y1="21" x2="94.5" y2="31.5" stroke="#1a1a1a" stroke-width="3"/>
-        <line x1="117" y1="60" x2="102" y2="60" stroke="#1a1a1a" stroke-width="3"/>
-        <line x1="15" y1="21" x2="25.5" y2="31.5" stroke="#1a1a1a" stroke-width="3"/>
-        <line x1="3" y1="60" x2="18" y2="60" stroke="#1a1a1a" stroke-width="3"/>
-        <line x1="21" y1="99" x2="30" y2="88.5" stroke="#1a1a1a" stroke-width="3"/>
+      <svg
+        viewBox="0 0 120 120"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+        width="80"
+        height="80"
+      >
+        <path d="M24 12L96 60L60 66L48 102L24 12Z" fill="#1a1a1a" />
+        <line
+          x1="60"
+          y1="3"
+          x2="60"
+          y2="18"
+          stroke="#1a1a1a"
+          stroke-width="3"
+        />
+        <line
+          x1="105"
+          y1="21"
+          x2="94.5"
+          y2="31.5"
+          stroke="#1a1a1a"
+          stroke-width="3"
+        />
+        <line
+          x1="117"
+          y1="60"
+          x2="102"
+          y2="60"
+          stroke="#1a1a1a"
+          stroke-width="3"
+        />
+        <line
+          x1="15"
+          y1="21"
+          x2="25.5"
+          y2="31.5"
+          stroke="#1a1a1a"
+          stroke-width="3"
+        />
+        <line
+          x1="3"
+          y1="60"
+          x2="18"
+          y2="60"
+          stroke="#1a1a1a"
+          stroke-width="3"
+        />
+        <line
+          x1="21"
+          y1="99"
+          x2="30"
+          y2="88.5"
+          stroke="#1a1a1a"
+          stroke-width="3"
+        />
       </svg>
     </div>
     <div class="menu__page-list__wrap">
       <ul class="menu__list">
         {#each items as item}
-          <li class="menu__item" on:click={() => navigate(item.href)} role="button" tabindex="0" on:keydown={(e) => e.key === 'Enter' && navigate(item.href)}>
+          <li
+            class="menu__item"
+            on:click={() => navigate(item.href)}
+            role="button"
+            tabindex="0"
+            on:keydown={(e) => e.key === "Enter" && navigate(item.href)}
+          >
             {item.label}
           </li>
         {/each}
       </ul>
     </div>
     <div class="social-icons">
-      <a href="https://pl.pinterest.com/ineedanicewebsite/_saved/" target="_blank" rel="noopener" class="social-icons__item">
-        <img src="/pinterest.png" alt="Pinterest" style="width:45px;height:45px;" />
+      <a
+        href="https://www.instagram.com/around.the.tongue/"
+        target="_blank"
+        rel="noopener"
+        class="social-icons__item"
+      >
+        <img
+          src="/instagram.svg"
+          alt="Instagram"
+          style="width:45px;height:45px;"
+        />
       </a>
     </div>
   </div>
@@ -122,7 +216,10 @@
   }
 
   /* Tiny separator <p>, mirrors empty <p /> in original Navbar.tsx */
-  .nav-spacer { margin: 0; padding: 0; }
+  .nav-spacer {
+    margin: 0;
+    padding: 0;
+  }
 
   /* Social icons — copied from _socialIcons.sass on branch=anna.
      Original used $l-space*1.5 (4.5rem) with 10px base = 45px. */
@@ -146,15 +243,27 @@
     align-items: center;
     text-decoration: none;
   }
-  .social-icons__item img { height: 100%; width: auto; display: block; }
-  .social-icons__item:hover { opacity: 0.5 !important; }
+  .social-icons__item img {
+    height: 100%;
+    width: auto;
+    padding: 7px;
+    box-sizing: border-box;
+    display: block;
+  }
+  .social-icons__item:hover {
+    opacity: 0.5 !important;
+  }
 
   /* Threshold reveal: visible when class navbar--active is added (scrollY < 150)
      or when the navbar is hovered. Matches ineedanicewebsite branch=anna. */
-  .navbar :global(.navbar--active) { opacity: 1 !important; }
+  .navbar :global(.navbar--active) {
+    opacity: 1 !important;
+  }
   .navbar:hover .langSwap,
   .navbar:hover :global(.social-icons__item),
-  .navbar:hover :global(.page-list__item) { opacity: 1; }
+  .navbar:hover :global(.page-list__item) {
+    opacity: 1;
+  }
 
   /* Page list — wraps the items, gives flex 0 1 54% like original */
   .page-list {
@@ -173,7 +282,7 @@
   }
 
   .page-list__item {
-    font-family: 'Poppins', sans-serif;
+    font-family: "Poppins", sans-serif;
     font-size: 2.6rem;
     text-transform: uppercase;
     font-weight: 500;
@@ -181,7 +290,9 @@
     transition: opacity 0.4s;
     cursor: pointer;
   }
-  .page-list__item:hover { opacity: 0.5 !important; }
+  .page-list__item:hover {
+    opacity: 0.5 !important;
+  }
 
   /* icon / burger */
   .icon {
@@ -212,12 +323,34 @@
     height: 5px;
   }
 
-  .closed .bar-1 { width: 50px; top: 15px; right: 0px; transition: 0.3s linear; }
-  .closed .bar-2 { width: 30px; top: 25px; right: 0px; transition: 0.3s linear; }
-  .opened .bar-1 { width: 30px; top: 15px; right: 0px; transition: 0.3s linear; }
-  .opened .bar-2 { width: 50px; top: 25px; right: 0px; transition: 0.3s linear; }
+  .closed .bar-1 {
+    width: 50px;
+    top: 15px;
+    right: 0px;
+    transition: 0.3s linear;
+  }
+  .closed .bar-2 {
+    width: 30px;
+    top: 25px;
+    right: 0px;
+    transition: 0.3s linear;
+  }
+  .opened .bar-1 {
+    width: 30px;
+    top: 15px;
+    right: 0px;
+    transition: 0.3s linear;
+  }
+  .opened .bar-2 {
+    width: 50px;
+    top: 25px;
+    right: 0px;
+    transition: 0.3s linear;
+  }
 
-  .menu-icon:hover .bar { background-color: rgb(43, 107, 172); }
+  .menu-icon:hover .bar {
+    background-color: rgb(43, 107, 172);
+  }
 
   /* ── OVERLAY MENU ── */
   .menu {
@@ -234,8 +367,12 @@
   }
 
   @keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
   }
 
   .menu__close {
@@ -251,17 +388,23 @@
   }
 
   .menu__close .bar-1 {
-    width: 40px; top: 15px; right: 0;
+    width: 40px;
+    top: 15px;
+    right: 0;
     transform: rotate(45deg);
     transform-origin: right center;
   }
   .menu__close .bar-2 {
-    width: 40px; top: 25px; right: 0;
+    width: 40px;
+    top: 25px;
+    right: 0;
     transform: rotate(-45deg);
     transform-origin: right center;
   }
 
-  .menu__cursor { margin-bottom: 24px; }
+  .menu__cursor {
+    margin-bottom: 24px;
+  }
 
   .menu__page-list__wrap {
     display: inline-block;
@@ -279,7 +422,7 @@
   }
 
   .menu__item {
-    font-family: 'Poppins', sans-serif;
+    font-family: "Poppins", sans-serif;
     font-size: clamp(2.2rem, 5vw, 3.4rem);
     font-weight: 700;
     letter-spacing: 0.04em;
@@ -289,10 +432,16 @@
     padding: 6px 0;
     transition: opacity 0.2s;
   }
-  .menu__item:hover { opacity: 0.35; }
+  .menu__item:hover {
+    opacity: 0.35;
+  }
 
   @media (max-width: 600px) {
-    .page-list { display: none; }
-    .menu { padding: 60px 32px; }
+    .page-list {
+      display: none;
+    }
+    .menu {
+      padding: 60px 32px;
+    }
   }
 </style>
