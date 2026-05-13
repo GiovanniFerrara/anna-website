@@ -19,6 +19,18 @@
 
   function navigate(href: string) {
     close();
+    if (href === "#about") {
+      if (window.location.hash !== "#about") {
+        window.location.hash = "about";
+      }
+      window.scrollTo({ top: 0, behavior: "auto" });
+      return;
+    }
+    const onAbout = window.location.hash === "#about";
+    if (onAbout) {
+      history.replaceState(null, "", window.location.pathname + window.location.search);
+      window.dispatchEvent(new HashChangeEvent("hashchange"));
+    }
     setTimeout(() => {
       document.querySelector(href)?.scrollIntoView({ behavior: "smooth" });
     }, 320);

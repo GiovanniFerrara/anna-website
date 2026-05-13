@@ -36,9 +36,9 @@
     display: flex;
     border-top: 2px solid #000;
     border-bottom: 2px solid #000;
-    margin-bottom: 90px;
-    padding-top: 11rem;
-    padding-bottom: 2rem;
+    margin: 0 var(--page-gutter) 90px;
+    padding-top: 4rem;
+    padding-bottom: 4rem;
     padding-left: var(--page-gutter);
     padding-right: var(--page-gutter);
     background: #faf7f0;
@@ -80,11 +80,9 @@
     margin: 0.85em 0;
   }
   .footer__logo {
-    position: absolute;
-    left: 50%;
-    bottom: calc(100% + 0.6rem);
-    transform: translateX(-50%);
     width: 80px;
+    display: block;
+    margin: 0 auto;
   }
 
   .footer__right {

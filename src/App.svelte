@@ -7,9 +7,18 @@
   import ProjectDetail from './components/ProjectDetail.svelte'
   import Footer from './components/Footer.svelte'
   import Services from './components/Services.svelte'
+  import AboutPage from './components/AboutPage.svelte'
 
   let selectedCategory: 'art' | 'food' | null = null
   let selectedProject: { id: number; category: string } | null = null
+
+  let currentHash = typeof window !== 'undefined' ? window.location.hash : ''
+  $: showAbout = currentHash === '#about'
+
+  function onHashChange() {
+    currentHash = window.location.hash
+    if (showAbout) window.scrollTo({ top: 0, behavior: 'auto' })
+  }
 
   function selectCategory(cat: 'art' | 'food') {
     selectedCategory = cat
@@ -31,7 +40,15 @@
   }
 </script>
 
+<svelte:window on:hashchange={onHashChange} />
+
 <Navbar />
+{#if showAbout}
+  <main>
+    <AboutPage />
+    <Footer />
+  </main>
+{:else}
 <main>
   <!-- Section 1: Curtain Hero -->
   <section id="hero">
@@ -63,3 +80,4 @@
   <!-- Footer -->
   <Footer />
 </main>
+{/if}
