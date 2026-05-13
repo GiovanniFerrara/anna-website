@@ -13,11 +13,11 @@
   }
 
   const items = [
+    { label: "Home", href: "#hero", key: "hero" },
     { label: "About", href: "#about", key: "about" },
-    { label: "Work", href: "#split", key: "split" },
+    { label: "Work", href: "#work", key: "work" },
     { label: "Contacts", href: "#contacts", key: "Footer" },
     { label: "Services", href: "#services", key: "services" },
-    { label: "Home", href: "#hero", key: "hero" },
   ];
 
   let activeKey = "hero";
@@ -28,7 +28,11 @@
       activeKey = "about";
       return;
     }
-    const sectionIds = ["hero", "split", "services", "Footer"];
+    if (window.location.hash === "#work") {
+      activeKey = "work";
+      return;
+    }
+    const sectionIds = ["hero", "services", "Footer"];
     const probe = window.scrollY + window.innerHeight * 0.35;
     let current = "hero";
     for (const id of sectionIds) {
@@ -50,15 +54,17 @@
 
   function navigate(href: string) {
     close();
-    if (href === "#about") {
-      if (window.location.hash !== "#about") {
-        window.location.hash = "about";
+    if (href === "#about" || href === "#work") {
+      const target = href.slice(1);
+      if (window.location.hash !== href) {
+        window.location.hash = target;
       }
       window.scrollTo({ top: 0, behavior: "auto" });
       return;
     }
-    const onAbout = window.location.hash === "#about";
-    if (onAbout) {
+    const onRoutedPage =
+      window.location.hash === "#about" || window.location.hash === "#work";
+    if (onRoutedPage) {
       history.replaceState(null, "", window.location.pathname + window.location.search);
       window.dispatchEvent(new HashChangeEvent("hashchange"));
     }

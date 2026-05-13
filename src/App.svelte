@@ -2,41 +2,21 @@
   import './app.css'
   import Navbar from './components/Navbar.svelte'
   import CurtainHero from './components/CurtainHero.svelte'
-  import SplitSection from './components/SplitSection.svelte'
-  import ProjectGrid from './components/ProjectGrid.svelte'
-  import ProjectDetail from './components/ProjectDetail.svelte'
+  import WorkTeaser from './components/WorkTeaser.svelte'
   import Footer from './components/Footer.svelte'
   import Services from './components/Services.svelte'
   import AboutPage from './components/AboutPage.svelte'
-
-  let selectedCategory: 'art' | 'food' | null = null
-  let selectedProject: { id: number; category: string } | null = null
+  import WorkPage from './components/WorkPage.svelte'
 
   let currentHash = typeof window !== 'undefined' ? window.location.hash : ''
   $: showAbout = currentHash === '#about'
+  $: showWork = currentHash === '#work'
 
   function onHashChange() {
     currentHash = window.location.hash
-    if (showAbout) window.scrollTo({ top: 0, behavior: 'auto' })
-  }
-
-  function selectCategory(cat: 'art' | 'food') {
-    selectedCategory = cat
-    selectedProject = null
-    setTimeout(() => {
-      document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' })
-    }, 50)
-  }
-
-  function selectProject(project: { id: number; category: string }) {
-    selectedProject = project
-    setTimeout(() => {
-      document.getElementById('project-detail')?.scrollIntoView({ behavior: 'smooth' })
-    }, 50)
-  }
-
-  function goBack() {
-    selectedProject = null
+    if (currentHash === '#about' || currentHash === '#work') {
+      window.scrollTo({ top: 0, behavior: 'auto' })
+    }
   }
 </script>
 
@@ -48,36 +28,23 @@
     <AboutPage />
     <Footer />
   </main>
+{:else if showWork}
+  <main>
+    <WorkPage />
+    <Footer />
+  </main>
 {:else}
 <main>
-  <!-- Section 1: Curtain Hero -->
   <section id="hero">
     <CurtainHero />
   </section>
 
-  <!-- Section 2: 50/50 Split -->
-  <section id="split">
-    <SplitSection on:select={(e) => selectCategory(e.detail)} />
+  <section id="work-teaser">
+    <WorkTeaser />
   </section>
 
-  <!-- Section 3: Project Grid -->
-  {#if selectedCategory}
-    <section id="projects">
-      <ProjectGrid category={selectedCategory} on:select={(e) => selectProject(e.detail)} />
-    </section>
-  {/if}
-
-  <!-- Section 4: Project Detail -->
-  {#if selectedProject}
-    <section id="project-detail">
-      <ProjectDetail project={selectedProject} on:back={goBack} />
-    </section>
-  {/if}
-
-  <!-- Section 5: Services -->
   <Services />
 
-  <!-- Footer -->
   <Footer />
 </main>
 {/if}
