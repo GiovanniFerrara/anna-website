@@ -1,4 +1,6 @@
 <script lang="ts">
+  import { onMount } from "svelte";
+
   let menuOpen = false;
   let scrollY = 0;
   $: active = scrollY < 150;
@@ -11,11 +13,40 @@
   }
 
   const items = [
-    { label: "About Me", href: "#about" },
-    { label: "Work", href: "#split" },
-    { label: "Contacts", href: "#contacts" },
-    { label: "Services", href: "#services" },
+    { label: "About", href: "#about", key: "about" },
+    { label: "Work", href: "#split", key: "split" },
+    { label: "Contacts", href: "#contacts", key: "Footer" },
+    { label: "Services", href: "#services", key: "services" },
+    { label: "Home", href: "#hero", key: "hero" },
   ];
+
+  let activeKey = "hero";
+
+  function updateActive() {
+    if (typeof window === "undefined") return;
+    if (window.location.hash === "#about") {
+      activeKey = "about";
+      return;
+    }
+    const sectionIds = ["hero", "split", "services", "Footer"];
+    const probe = window.scrollY + window.innerHeight * 0.35;
+    let current = "hero";
+    for (const id of sectionIds) {
+      const el = document.getElementById(id);
+      if (el && el.offsetTop <= probe) current = id;
+    }
+    activeKey = current;
+  }
+
+  onMount(() => {
+    updateActive();
+    window.addEventListener("scroll", updateActive, { passive: true });
+    window.addEventListener("hashchange", updateActive);
+    return () => {
+      window.removeEventListener("scroll", updateActive);
+      window.removeEventListener("hashchange", updateActive);
+    };
+  });
 
   function navigate(href: string) {
     close();
@@ -76,6 +107,7 @@
         <li
           class="page-list__item"
           class:navbar--active={active}
+          class:is-active={item.key === activeKey}
           on:click={() => navigate(item.href)}
           role="button"
           tabindex="0"
@@ -173,6 +205,7 @@
         {#each items as item}
           <li
             class="menu__item"
+            class:is-active={item.key === activeKey}
             on:click={() => navigate(item.href)}
             role="button"
             tabindex="0"
@@ -304,6 +337,12 @@
   }
   .page-list__item:hover {
     opacity: 0.5 !important;
+  }
+  .page-list__item.is-active {
+    color: #2b6bac;
+  }
+  .menu__item.is-active {
+    color: #2b6bac;
   }
 
   /* icon / burger */

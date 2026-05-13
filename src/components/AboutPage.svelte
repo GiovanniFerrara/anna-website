@@ -7,12 +7,14 @@
 
   <div class="about__right">
     <h1 class="about__title">MANIFESTO</h1>
+    <hr class="about__divider about__divider--mobile about__divider--m1" />
     <img
       class="about__image about__image--small"
       src="/flowers.JPG"
       alt="Detail"
     />
-    <hr class="about__divider" />
+    <hr class="about__divider about__divider--mobile about__divider--m2" />
+    <hr class="about__divider about__divider--main" />
     <p class="about__text">
       Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod
       tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
@@ -83,6 +85,10 @@
     width: 100%;
   }
 
+  .about__divider--mobile {
+    display: none;
+  }
+
   .about__text {
     font-family: "Poppins", sans-serif;
     font-size: 1.7rem;
@@ -93,20 +99,44 @@
 
   @media (max-width: 992px) {
     .about {
-      grid-template-columns: 1fr;
+      display: flex;
+      flex-direction: column;
       padding: 11rem var(--page-gutter) 4rem;
-      gap: 2rem;
+      gap: 1.5rem;
     }
-    .about__image--big {
-      max-height: 60vh;
-    }
-    .about__image--small {
-      display: none;
+    .about__right {
+      display: contents;
     }
     .about__title {
+      order: 1;
       text-align: left;
       font-size: clamp(5rem, 14vw, 9rem);
       margin: 1rem 0 0;
+    }
+    .about__divider--m1 {
+      display: block;
+      order: 2;
+    }
+    .about__image--big {
+      order: 3;
+      max-height: 60vh;
+    }
+    .about__divider--m2 {
+      display: block;
+      order: 4;
+    }
+    .about__text {
+      order: 5;
+    }
+    .about__divider--main {
+      order: 6;
+    }
+    .about__image--small {
+      order: 7;
+      width: 100%;
+      max-height: 60vh;
+      aspect-ratio: auto;
+      margin-top: 0;
     }
   }
 </style>
