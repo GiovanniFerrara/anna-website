@@ -1,38 +1,37 @@
 <script lang="ts">
   import { createEventDispatcher } from "svelte";
+  import SectionDivider from "./SectionDivider.svelte";
   const dispatch = createEventDispatcher();
 </script>
 
 <div class="split">
-  <div class="split__col">
-    <hr class="hr--custom split__hr" data-content="Food Art" />
-    <button
-      class="split__side split__side--art"
-      on:click={() => dispatch("select", "art")}
-      aria-label="View art projects"
-    ></button>
-    <div class="split__caption">
-      <p class="split__caption-content">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit.<br />
-        Brief: Sed do eiusmod tempor incididunt.
-      </p>
-    </div>
-  </div>
+  <button
+    type="button"
+    class="split__col"
+    on:click={() => dispatch("select", "art")}
+    aria-label="View art projects"
+  >
+    <div class="split__hr"><SectionDivider label="FOOD ART" /></div>
+    <p class="split__desc">
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod
+      tempor incididunt ut labore et dolore magna aliqua.
+    </p>
+    <div class="split__side split__side--art"></div>
+  </button>
 
-  <div class="split__col">
-    <hr class="hr--custom split__hr" data-content="Food Design" />
-    <button
-      class="split__side split__side--food"
-      on:click={() => dispatch("select", "food")}
-      aria-label="View food design projects"
-    ></button>
-    <div class="split__caption">
-      <p class="split__caption-content">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit.<br />
-        Brief: Ut labore et dolore magna aliqua.
-      </p>
-    </div>
-  </div>
+  <button
+    type="button"
+    class="split__col"
+    on:click={() => dispatch("select", "food")}
+    aria-label="View food design projects"
+  >
+    <div class="split__hr"><SectionDivider label="FOOD DESIGN" /></div>
+    <p class="split__desc">
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut labore et
+      dolore magna aliqua.
+    </p>
+    <div class="split__side split__side--food"></div>
+  </button>
 </div>
 
 <style>
@@ -52,10 +51,40 @@
     display: flex;
     flex-direction: column;
     min-width: 0;
+    background: none;
+    border: none;
+    padding: 0;
+    font: inherit;
+    color: inherit;
+    text-align: inherit;
+    cursor: pointer;
   }
 
   .split__hr {
-    margin-bottom: calc(var(--page-gutter));
+    margin-bottom: 24px;
+  }
+
+  .split__desc {
+    font-family: "Poppins", sans-serif;
+    font-size: 1.5rem;
+    line-height: 1.5;
+    color: #000;
+    margin: 0 0 24px;
+    min-height: calc(1.5em * 3);
+  }
+
+  .split__hr :global(.hr--custom) {
+    height: 4rem;
+    text-transform: none;
+  }
+
+  .split__hr :global(.hr--custom::after) {
+    font-family: "Baskervville", serif;
+    font-weight: 600;
+    font-size: clamp(3rem, 4.5vw, 5rem);
+    letter-spacing: 0.02em;
+    padding: 0 0.4em;
+    top: -7px;
   }
 
   .split__side {
@@ -97,25 +126,26 @@
     transform: scale(1.15);
   }
 
-  /* Caption — copied pattern from old portfolioCard (branch=anna) */
-  .split__caption {
-    margin-top: 4rem;
-  }
-  .split__caption-content {
-    border-top: 2px solid black;
-    border-bottom: 2px solid black;
-    padding-top: 1.2rem;
-    font-family: "Poppins", sans-serif;
-    font-size: 1.5rem;
-    line-height: 1.5;
-    min-height: 110px;
-    margin: 0;
-    padding-bottom: 1.2rem;
-  }
-
   @media (max-width: 768px) {
     .split {
       flex-direction: column;
+      height: auto;
+      gap: 3rem;
+    }
+    .split__side {
+      flex: none;
+      width: 100%;
+      height: auto;
+    }
+    .split__side--art {
+      aspect-ratio: 870 / 1280;
+    }
+    .split__side--food {
+      aspect-ratio: 870 / 1280;
+    }
+    .split__side::before {
+      background-size: cover;
+      background-position: center;
     }
   }
 </style>

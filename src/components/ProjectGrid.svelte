@@ -1,39 +1,33 @@
 <script lang="ts">
   import { createEventDispatcher } from "svelte";
+  import SectionDivider from "./SectionDivider.svelte";
   export let category: "art" | "food";
   const dispatch = createEventDispatcher();
 
-  // Placeholder projects — Anna will replace with real images
   const artProjects = [
     {
       id: 1,
       title: "Project 01",
+      desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
       thumb: "https://placehold.co/600x800/e8e0d6/666?text=Art+01",
     },
     {
       id: 2,
       title: "Project 02",
+      desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
       thumb: "https://placehold.co/600x800/ddd8cf/666?text=Art+02",
     },
     {
       id: 3,
       title: "Project 03",
+      desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
       thumb: "https://placehold.co/600x800/e8e0d6/666?text=Art+03",
     },
     {
       id: 4,
       title: "Project 04",
+      desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
       thumb: "https://placehold.co/600x800/ddd8cf/666?text=Art+04",
-    },
-    {
-      id: 5,
-      title: "Project 05",
-      thumb: "https://placehold.co/600x800/e8e0d6/666?text=Art+05",
-    },
-    {
-      id: 6,
-      title: "Project 06",
-      thumb: "https://placehold.co/600x800/ddd8cf/666?text=Art+06",
     },
   ];
 
@@ -41,21 +35,25 @@
     {
       id: 1,
       title: "Project 01",
+      desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
       thumb: "https://placehold.co/600x800/f0ebe3/666?text=Food+01",
     },
     {
       id: 2,
       title: "Project 02",
+      desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
       thumb: "https://placehold.co/600x800/e5dfd6/666?text=Food+02",
     },
     {
       id: 3,
       title: "Project 03",
+      desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
       thumb: "https://placehold.co/600x800/f0ebe3/666?text=Food+03",
     },
     {
       id: 4,
       title: "Project 04",
+      desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
       thumb: "https://placehold.co/600x800/e5dfd6/666?text=Food+04",
     },
   ];
@@ -66,7 +64,7 @@
 
 <div class="grid-section">
   <div class="grid-section__header">
-    <h2 class="grid-section__title">{label}</h2>
+    <SectionDivider label={label} />
   </div>
 
   <div class="grid-section__grid">
@@ -83,7 +81,7 @@
             loading="lazy"
           />
         </div>
-        <span class="grid-item__label">{project.title}</span>
+        <h3 class="grid-item__title">{project.title}</h3>
       </button>
     {/each}
   </div>
@@ -91,30 +89,17 @@
 
 <style>
   .grid-section {
-    min-height: 100vh;
-    padding: 80px 40px;
-    background-color: #faf7f4;
+    padding: 6rem var(--page-gutter);
   }
 
   .grid-section__header {
-    margin-bottom: 60px;
-    text-align: center;
-  }
-
-  .grid-section__title {
-    font-size: clamp(1.2rem, 2.5vw, 2rem);
-    font-weight: 300;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: #1a1a1a;
+    margin-bottom: 4rem;
   }
 
   .grid-section__grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 24px;
-    max-width: 1200px;
-    margin: 0 auto;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2rem;
   }
 
   .grid-item {
@@ -125,12 +110,15 @@
     text-align: left;
     display: flex;
     flex-direction: column;
-    gap: 12px;
+    gap: 1rem;
+    font: inherit;
+    color: inherit;
   }
 
   .grid-item__img-wrap {
     overflow: hidden;
-    aspect-ratio: 3/4;
+    aspect-ratio: 4/3;
+    border-radius: 12px;
     background-color: #e8e0d6;
   }
 
@@ -145,24 +133,22 @@
     transform: scale(1.04);
   }
 
-  .grid-item__label {
-    font-size: 0.85rem;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: #666;
+  .grid-item__title {
+    font-family: "Baskervville", serif;
+    font-size: 1.8rem;
+    font-weight: 600;
+    color: #000;
+    margin: 0.5rem 0 0;
+    line-height: 1.2;
   }
 
-  @media (max-width: 768px) {
+  @media (max-width: 992px) {
     .grid-section__grid {
       grid-template-columns: repeat(2, 1fr);
-      gap: 16px;
-    }
-    .grid-section {
-      padding: 60px 20px;
     }
   }
 
-  @media (max-width: 480px) {
+  @media (max-width: 560px) {
     .grid-section__grid {
       grid-template-columns: 1fr;
     }

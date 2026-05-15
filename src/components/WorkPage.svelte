@@ -3,15 +3,11 @@
   import ProjectGrid from "./ProjectGrid.svelte";
   import ProjectDetail from "./ProjectDetail.svelte";
 
-  let selectedCategory: "art" | "food" | null = null;
   let selectedProject: { id: number; category: string } | null = null;
 
-  function selectCategory(cat: "art" | "food") {
-    selectedCategory = cat;
-    selectedProject = null;
-    setTimeout(() => {
-      document.getElementById("projects")?.scrollIntoView({ behavior: "smooth" });
-    }, 50);
+  function scrollTo(cat: "art" | "food") {
+    const id = cat === "food" ? "food-design" : "food-art";
+    document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
   }
 
   function selectProject(project: { id: number; category: string }) {
@@ -28,14 +24,16 @@
 
 <div class="work-page">
   <section id="split">
-    <SplitSection on:select={(e) => selectCategory(e.detail)} />
+    <SplitSection on:select={(e) => scrollTo(e.detail)} />
   </section>
 
-  {#if selectedCategory}
-    <section id="projects">
-      <ProjectGrid category={selectedCategory} on:select={(e) => selectProject(e.detail)} />
-    </section>
-  {/if}
+  <section id="food-design">
+    <ProjectGrid category="food" on:select={(e) => selectProject(e.detail)} />
+  </section>
+
+  <section id="food-art">
+    <ProjectGrid category="art" on:select={(e) => selectProject(e.detail)} />
+  </section>
 
   {#if selectedProject}
     <section id="project-detail">

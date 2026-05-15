@@ -63,7 +63,6 @@
     line-height: 1;
     margin: -18px -13px 0 0;
     color: #000;
-    text-shadow: -1px 1.5px black;
     letter-spacing: 0.02em;
   }
 

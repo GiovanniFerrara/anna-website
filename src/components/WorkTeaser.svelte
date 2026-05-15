@@ -1,4 +1,5 @@
 <script lang="ts">
+  import SectionDivider from "./SectionDivider.svelte";
   // columns laid out as [top, bottom] pairs.
   // pattern: col1 = short + tall, col2 = tall + short, col3 = short + tall
   const cols = [
@@ -28,6 +29,10 @@
   on:click={goWork}
   on:keydown={(e) => e.key === "Enter" && goWork()}
 >
+  <div class="work-teaser__section-divider">
+    <SectionDivider label="Work" />
+  </div>
+
   <div class="work-teaser__grid">
     {#each cols as col}
       <div class="work-teaser__col">
@@ -58,8 +63,13 @@
     cursor: pointer;
     transition: opacity 0.2s ease;
   }
+
   .work-teaser:hover {
     opacity: 0.95;
+  }
+
+  .work-teaser__section-divider {
+    margin: 4rem 0 6rem;
   }
 
   .work-teaser__grid {
@@ -96,9 +106,9 @@
 
   .work-teaser__caption {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 2rem;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
     padding: 2rem 0;
     font-family: "Poppins", sans-serif;
   }
