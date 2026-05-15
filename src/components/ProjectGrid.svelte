@@ -82,6 +82,7 @@
           />
         </div>
         <h3 class="grid-item__title">{project.title}</h3>
+        <p class="grid-item__desc">{project.desc}</p>
       </button>
     {/each}
   </div>
@@ -140,6 +141,14 @@
     color: #000;
     margin: 0.5rem 0 0;
     line-height: 1.2;
+  }
+
+  .grid-item__desc {
+    font-family: "Poppins", sans-serif;
+    font-size: 1.3rem;
+    line-height: 1.5;
+    color: #000;
+    margin: 0;
   }
 
   @media (max-width: 992px) {

@@ -1,24 +1,20 @@
 <script lang="ts">
   import SplitSection from "./SplitSection.svelte";
   import ProjectGrid from "./ProjectGrid.svelte";
-  import ProjectDetail from "./ProjectDetail.svelte";
+  import ProjectShowcase from "./ProjectShowcase.svelte";
 
-  let selectedProject: { id: number; category: string } | null = null;
+  let selectedProject: { id: number; category: "art" | "food" } | null = null;
 
   function scrollTo(cat: "art" | "food") {
     const id = cat === "food" ? "food-design" : "food-art";
     document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
   }
 
-  function selectProject(project: { id: number; category: string }) {
+  function selectProject(project: { id: number; category: "art" | "food" }) {
     selectedProject = project;
     setTimeout(() => {
-      document.getElementById("project-detail")?.scrollIntoView({ behavior: "smooth" });
+      document.getElementById("project-showcase")?.scrollIntoView({ behavior: "smooth" });
     }, 50);
-  }
-
-  function goBack() {
-    selectedProject = null;
   }
 </script>
 
@@ -36,8 +32,8 @@
   </section>
 
   {#if selectedProject}
-    <section id="project-detail">
-      <ProjectDetail project={selectedProject} on:back={goBack} />
+    <section id="project-showcase">
+      <ProjectShowcase project={selectedProject} />
     </section>
   {/if}
 </div>
