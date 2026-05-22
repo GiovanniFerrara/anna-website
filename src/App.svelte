@@ -7,14 +7,16 @@
   import Services from './components/Services.svelte'
   import AboutPage from './components/AboutPage.svelte'
   import WorkPage from './components/WorkPage.svelte'
+  import ContactsPage from './components/ContactsPage.svelte'
 
   let currentHash = typeof window !== 'undefined' ? window.location.hash : ''
   $: showAbout = currentHash === '#about'
   $: showWork = currentHash === '#work'
+  $: showContacts = currentHash === '#contacts'
 
   function onHashChange() {
     currentHash = window.location.hash
-    if (currentHash === '#about' || currentHash === '#work') {
+    if (currentHash === '#about' || currentHash === '#work' || currentHash === '#contacts') {
       window.scrollTo({ top: 0, behavior: 'auto' })
     }
   }
@@ -31,6 +33,11 @@
 {:else if showWork}
   <main>
     <WorkPage />
+    <Footer />
+  </main>
+{:else if showContacts}
+  <main>
+    <ContactsPage />
     <Footer />
   </main>
 {:else}

@@ -16,7 +16,7 @@
     { label: "Home", href: "#hero", key: "hero" },
     { label: "About", href: "#about", key: "about" },
     { label: "Work", href: "#work", key: "work" },
-    { label: "Contacts", href: "#contacts", key: "Footer" },
+    { label: "Contacts", href: "#contacts", key: "contacts" },
     { label: "Services", href: "#services", key: "services" },
   ];
 
@@ -30,6 +30,10 @@
     }
     if (window.location.hash === "#work") {
       activeKey = "work";
+      return;
+    }
+    if (window.location.hash === "#contacts") {
+      activeKey = "contacts";
       return;
     }
     const sectionIds = ["hero", "services", "Footer"];
@@ -54,7 +58,7 @@
 
   function navigate(href: string) {
     close();
-    if (href === "#about" || href === "#work") {
+    if (href === "#about" || href === "#work" || href === "#contacts") {
       const target = href.slice(1);
       if (window.location.hash !== href) {
         window.location.hash = target;
@@ -63,7 +67,9 @@
       return;
     }
     const onRoutedPage =
-      window.location.hash === "#about" || window.location.hash === "#work";
+      window.location.hash === "#about" ||
+      window.location.hash === "#work" ||
+      window.location.hash === "#contacts";
     if (onRoutedPage) {
       history.replaceState(null, "", window.location.pathname + window.location.search);
       window.dispatchEvent(new HashChangeEvent("hashchange"));
