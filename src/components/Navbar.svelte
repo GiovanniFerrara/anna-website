@@ -149,69 +149,6 @@
 <!-- Overlay menu -->
 {#if menuOpen}
   <div class="menu" role="presentation">
-    <button class="menu__close" on:click={close} aria-label="Close">
-      <div class="bar bar-1"></div>
-      <div class="bar bar-2"></div>
-    </button>
-    <div class="menu__cursor">
-      <svg
-        viewBox="0 0 120 120"
-        fill="none"
-        xmlns="http://www.w3.org/2000/svg"
-        width="80"
-        height="80"
-      >
-        <path d="M24 12L96 60L60 66L48 102L24 12Z" fill="#1a1a1a" />
-        <line
-          x1="60"
-          y1="3"
-          x2="60"
-          y2="18"
-          stroke="#1a1a1a"
-          stroke-width="3"
-        />
-        <line
-          x1="105"
-          y1="21"
-          x2="94.5"
-          y2="31.5"
-          stroke="#1a1a1a"
-          stroke-width="3"
-        />
-        <line
-          x1="117"
-          y1="60"
-          x2="102"
-          y2="60"
-          stroke="#1a1a1a"
-          stroke-width="3"
-        />
-        <line
-          x1="15"
-          y1="21"
-          x2="25.5"
-          y2="31.5"
-          stroke="#1a1a1a"
-          stroke-width="3"
-        />
-        <line
-          x1="3"
-          y1="60"
-          x2="18"
-          y2="60"
-          stroke="#1a1a1a"
-          stroke-width="3"
-        />
-        <line
-          x1="21"
-          y1="99"
-          x2="30"
-          y2="88.5"
-          stroke="#1a1a1a"
-          stroke-width="3"
-        />
-      </svg>
-    </div>
     <div class="menu__page-list__wrap">
       <ul class="menu__list">
         {#each items as item}
@@ -465,14 +402,13 @@
     transform-origin: right center;
   }
 
-  .menu__cursor {
-    margin-bottom: 24px;
-  }
-
   .menu__page-list__wrap {
-    display: inline-block;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
     text-align: left;
-    margin: auto 0;
+    flex: 1 1 auto;
   }
 
   .menu__list {
@@ -481,6 +417,7 @@
     margin: 0;
     display: flex;
     flex-direction: column;
+    align-items: flex-start;
     gap: 4px;
   }
 
