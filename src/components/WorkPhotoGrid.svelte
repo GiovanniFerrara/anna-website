@@ -1,4 +1,11 @@
 <script lang="ts">
+  import photo1 from "../assets/home-page-photo-1.jpg";
+  import photo2 from "../assets/home-page-photo-2.jpg";
+  import photo3 from "../assets/home-page-photo-3.jpg";
+  import photo4 from "../assets/home-page-photo-4.jpg";
+  import photo5 from "../assets/home-page-photo-5.jpg";
+  import photo6 from "../assets/home-page-photo-6.jpg";
+
   type Tile = {
     color?: string;
     src?: string;
@@ -8,16 +15,16 @@
 
   const defaults: Tile[][] = [
     [
-      { color: "#d8c9b6", shape: "short" },
-      { color: "#c7b89a", shape: "tall" },
+      { src: photo1, shape: "short" },
+      { src: photo2, shape: "tall" },
     ],
     [
-      { color: "#b8a988", shape: "tall" },
-      { color: "#a8997a", shape: "short" },
+      { src: photo3, shape: "tall" },
+      { src: photo4, shape: "short" },
     ],
     [
-      { color: "#988a6c", shape: "short" },
-      { color: "#88795e", shape: "tall" },
+      { src: photo5, shape: "short" },
+      { src: photo6, shape: "tall" },
     ],
   ];
 

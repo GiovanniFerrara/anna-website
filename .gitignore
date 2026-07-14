@@ -18,6 +18,7 @@ dist-ssr
 *.jpeg
 *.jpg
 !public/**
+!src/assets/**
 
 # Editor directories and files
 .vscode/*
