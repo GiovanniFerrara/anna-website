@@ -34,3 +34,5 @@ dist-ssr
 # Raw photo/video material (originals, not used by the build)
 /assets/
 .tmp-sheets/
+anna-site-dist.zip
+/old-website/
