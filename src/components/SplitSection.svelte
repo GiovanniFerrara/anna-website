@@ -13,8 +13,7 @@
   >
     <div class="split__hr"><SectionDivider label="FOOD ART" /></div>
     <p class="split__desc">
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod
-      tempor incididunt ut labore et dolore magna aliqua.
+      Made to be experienced - where food becomes form, language, and meaning.
     </p>
     <div class="split__side split__side--art"></div>
   </button>
@@ -27,8 +26,8 @@
   >
     <div class="split__hr"><SectionDivider label="FOOD DESIGN" /></div>
     <p class="split__desc">
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut labore et
-      dolore magna aliqua.
+      Made to be eaten - where food serves the occasion to celebrate and bring
+      people together.
     </p>
     <div class="split__side split__side--food"></div>
   </button>
@@ -61,7 +60,7 @@
   }
 
   .split__hr {
-    margin-bottom: 24px;
+    margin-bottom: 0;
   }
 
   .split__desc {
@@ -69,8 +68,13 @@
     font-size: 1.5rem;
     line-height: 1.5;
     color: #000;
-    margin: 0 0 24px;
+    margin: 24px 0;
     min-height: calc(1.5em * 3);
+    /* centered horizontally, and vertically between the line and the photo */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
   }
 
   .split__hr :global(.hr--custom) {
@@ -107,7 +111,7 @@
     inset: 0;
     background-size: cover;
     background-position: center;
-    transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    transition: var(--hover-zoom-transition);
     will-change: transform;
   }
 
@@ -123,7 +127,7 @@
   }
 
   .split__side:hover::before {
-    transform: scale(1.15);
+    transform: scale(var(--hover-zoom-scale));
   }
 
   @media (max-width: 768px) {

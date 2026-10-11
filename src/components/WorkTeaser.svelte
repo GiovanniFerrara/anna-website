@@ -22,11 +22,10 @@
 
   <hr class="work-teaser__divider work-teaser__divider--top" />
   <div class="work-teaser__caption">
-    <p class="work-teaser__lorem">
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod
-      tempor incididunt ut labore et dolore magna aliqua.
-    </p>
-    <p class="work-teaser__view-all">View all works</p>
+    <a class="work-teaser__view-all" href="#work">
+      View all works
+      <span class="work-teaser__arrow" aria-hidden="true">&rarr;</span>
+    </a>
   </div>
   <hr class="work-teaser__divider" />
 </div>
@@ -66,25 +65,26 @@
     font-family: "Poppins", sans-serif;
   }
 
-  .work-teaser__lorem {
-    margin: 0;
-    font-size: 1.7rem;
-    line-height: 1.6;
-    font-weight: 500;
-    max-width: 60%;
-  }
-
   .work-teaser__view-all {
+    display: inline-flex;
+    align-items: center;
+    gap: 1rem;
     margin: 0;
     font-size: 1.7rem;
     font-weight: 500;
     text-transform: uppercase;
     letter-spacing: 0.04em;
+    color: inherit;
+    text-decoration: none;
   }
 
-  @media (max-width: 768px) {
-    .work-teaser__lorem {
-      max-width: 100%;
-    }
+  .work-teaser__arrow {
+    font-size: 2.2rem;
+    line-height: 1;
+    transition: transform 0.3s ease;
+  }
+
+  .work-teaser:hover .work-teaser__arrow {
+    transform: translateX(6px);
   }
 </style>

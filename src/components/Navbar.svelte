@@ -28,7 +28,7 @@
       activeKey = "about";
       return;
     }
-    if (window.location.hash === "#work") {
+    if (window.location.hash.startsWith("#work")) {
       activeKey = "work";
       return;
     }
@@ -68,7 +68,7 @@
     }
     const onRoutedPage =
       window.location.hash === "#about" ||
-      window.location.hash === "#work" ||
+      window.location.hash.startsWith("#work") ||
       window.location.hash === "#contacts";
     if (onRoutedPage) {
       history.replaceState(null, "", window.location.pathname + window.location.search);

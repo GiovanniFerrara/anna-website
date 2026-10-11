@@ -30,3 +30,7 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Raw photo/video material (originals, not used by the build)
+/assets/
+.tmp-sheets/

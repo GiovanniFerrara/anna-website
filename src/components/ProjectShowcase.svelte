@@ -1,5 +1,6 @@
 <script lang="ts">
   import WorkPhotoGrid from "./WorkPhotoGrid.svelte";
+  import { foodDesignProjects, foodArtExtraProjects } from "../lib/foodDesignProjects";
 
   import candles1 from "../assets/art-candles-1.jpg";
   import candles2 from "../assets/art-candles-2.jpg";
@@ -9,11 +10,11 @@
   import candles6 from "../assets/art-candles-6.jpg";
 
   import fear1 from "../assets/art-fear-1.jpg";
-  import fear2 from "../assets/art-fear-2.jpg";
   import fear3 from "../assets/art-fear-3.jpg";
   import fear4 from "../assets/art-fear-4.jpg";
   import fear5 from "../assets/art-fear-5.jpg";
-  import fear6 from "../assets/art-fear-6.jpg";
+  import fear7 from "../assets/art-fear-7.jpg";
+  import fear8 from "../assets/art-fear-8.jpg";
 
   import conflict1 from "../assets/art-conflict-1.jpg";
   import conflict2 from "../assets/art-conflict-2.jpg";
@@ -41,7 +42,7 @@
     ],
     2: [
       [
-        { src: fear2, shape: "short" },
+        { src: fear7, shape: "short" },
         { src: fear1, shape: "tall" },
       ],
       [
@@ -50,7 +51,7 @@
       ],
       [
         { src: fear5, shape: "short" },
-        { src: fear6, shape: "tall" },
+        { src: fear8, shape: "tall" },
       ],
     ],
     3: [
@@ -71,7 +72,11 @@
 
   export let project: { id: number; category: "art" | "food" };
 
-  $: cols = project.category === "art" ? artPhotoSets[project.id] : undefined;
+  $: cols =
+    project.category === "art"
+      ? (artPhotoSets[project.id] ??
+        foodArtExtraProjects.find((p) => p.id === project.id)?.cols)
+      : foodDesignProjects.find((p) => p.id === project.id)?.cols;
 </script>
 
 <div class="showcase">

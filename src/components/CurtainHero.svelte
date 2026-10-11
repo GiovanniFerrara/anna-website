@@ -21,11 +21,9 @@
 <div class="landing">
   <div class="landing__title">
     <div style="transform: scale({titleScale})">
-      <p>
-        <span class="landing__title-span">Hello,</span>
-        <span class="landing__title-span"> I'm so happy</span>
-      </p>
-      <p class="landing__title-span"> to see you here!</p>
+      <p class="landing__title-span">Welcome!</p>
+      <p class="landing__title-span">Here I make art</p>
+      <p class="landing__title-span">you can eat.</p>
     </div>
   </div>
 
@@ -37,7 +35,7 @@
       class="landing__subtitle-reveal"
       style="font-size: {subtitleFontSizeRem}rem"
     >
-      <span class="landing__title-span">See what's possible for you.</span>
+      <span class="landing__title-span">See what food can become.</span>
     </div>
   </div>
 

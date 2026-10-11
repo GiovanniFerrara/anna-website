@@ -2,6 +2,7 @@
   import SplitSection from "./SplitSection.svelte";
   import ProjectGrid from "./ProjectGrid.svelte";
   import ProjectShowcase from "./ProjectShowcase.svelte";
+  import { onMount } from "svelte";
 
   let selectedProject: { id: number; category: "art" | "food" } | null = null;
 
@@ -10,12 +11,27 @@
     document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
   }
 
-  function selectProject(project: { id: number; category: "art" | "food" }) {
+  function selectProject(
+    project: { id: number; category: "art" | "food" },
+    behavior: ScrollBehavior = "smooth",
+  ) {
     selectedProject = project;
     setTimeout(() => {
-      document.getElementById("project-showcase")?.scrollIntoView({ behavior: "smooth" });
+      document.getElementById("project-showcase")?.scrollIntoView({ behavior });
     }, 50);
   }
+
+  // Deep links from the home page photos: #work/<art|food>/<id>
+  function openFromHash() {
+    const m = window.location.hash.match(/^#work\/(art|food)\/(\d+)/);
+    if (m) selectProject({ category: m[1] as "art" | "food", id: Number(m[2]) }, "instant");
+  }
+
+  onMount(() => {
+    openFromHash();
+    window.addEventListener("hashchange", openFromHash);
+    return () => window.removeEventListener("hashchange", openFromHash);
+  });
 </script>
 
 <div class="work-page">

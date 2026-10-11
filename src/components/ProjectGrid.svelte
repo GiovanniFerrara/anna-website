@@ -1,62 +1,36 @@
 <script lang="ts">
   import { createEventDispatcher } from "svelte";
   import SectionDivider from "./SectionDivider.svelte";
+  import artCover1 from "../assets/art-candles-1.jpg";
+  import artCover2 from "../assets/art-fear-7.jpg";
+  import artCover3 from "../assets/art-conflict-1.jpg";
+  import { foodDesignProjects, foodArtExtraProjects, descriptions } from "../lib/foodDesignProjects";
   export let category: "art" | "food";
   const dispatch = createEventDispatcher();
 
   const artProjects = [
     {
       id: 1,
-      title: "Project 01",
-      desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-      thumb: "https://placehold.co/600x800/e8e0d6/666?text=Art+01",
+      title: "Funeral of Autumn",
+      desc: descriptions["Funeral of Autumn"],
+      thumb: artCover1,
     },
     {
       id: 2,
-      title: "Project 02",
-      desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-      thumb: "https://placehold.co/600x800/ddd8cf/666?text=Art+02",
+      title: "Disruptors of Days",
+      desc: descriptions["Disruptors of Days"],
+      thumb: artCover2,
     },
     {
       id: 3,
-      title: "Project 03",
-      desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-      thumb: "https://placehold.co/600x800/e8e0d6/666?text=Art+03",
+      title: "Taste of Conflict",
+      desc: descriptions["Taste of Conflict"],
+      thumb: artCover3,
     },
-    {
-      id: 4,
-      title: "Project 04",
-      desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-      thumb: "https://placehold.co/600x800/ddd8cf/666?text=Art+04",
-    },
+    ...foodArtExtraProjects,
   ];
 
-  const foodProjects = [
-    {
-      id: 1,
-      title: "Project 01",
-      desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-      thumb: "https://placehold.co/600x800/f0ebe3/666?text=Food+01",
-    },
-    {
-      id: 2,
-      title: "Project 02",
-      desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-      thumb: "https://placehold.co/600x800/e5dfd6/666?text=Food+02",
-    },
-    {
-      id: 3,
-      title: "Project 03",
-      desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-      thumb: "https://placehold.co/600x800/f0ebe3/666?text=Food+03",
-    },
-    {
-      id: 4,
-      title: "Project 04",
-      desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-      thumb: "https://placehold.co/600x800/e5dfd6/666?text=Food+04",
-    },
-  ];
+  const foodProjects = foodDesignProjects;
 
   $: projects = category === "art" ? artProjects : foodProjects;
   $: label = category === "art" ? "Food Art" : "Food Design";
@@ -97,10 +71,18 @@
     margin-bottom: 4rem;
   }
 
+  /* Flex instead of grid so an incomplete last row stays centered */
   .grid-section__grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 2rem;
+    --cols: 4;
+    --gap: 2rem;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: var(--gap);
+  }
+
+  .grid-section__grid > .grid-item {
+    width: calc((100% - (var(--cols) - 1) * var(--gap)) / var(--cols));
   }
 
   .grid-item {
@@ -153,13 +135,13 @@
 
   @media (max-width: 992px) {
     .grid-section__grid {
-      grid-template-columns: repeat(2, 1fr);
+      --cols: 2;
     }
   }
 
   @media (max-width: 560px) {
     .grid-section__grid {
-      grid-template-columns: 1fr;
+      --cols: 1;
     }
   }
 </style>

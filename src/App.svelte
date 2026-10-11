@@ -11,7 +11,7 @@
 
   let currentHash = typeof window !== 'undefined' ? window.location.hash : ''
   $: showAbout = currentHash === '#about'
-  $: showWork = currentHash === '#work'
+  $: showWork = currentHash.startsWith('#work')
   $: showContacts = currentHash === '#contacts'
 
   function onHashChange() {

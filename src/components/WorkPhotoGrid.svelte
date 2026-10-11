@@ -11,20 +11,22 @@
     src?: string;
     alt?: string;
     shape: "short" | "tall";
+    /** Optional link, e.g. "#work/food/7" opens that project */
+    href?: string;
   };
 
   const defaults: Tile[][] = [
     [
-      { src: photo1, shape: "short" },
-      { src: photo2, shape: "tall" },
+      { src: photo1, shape: "short", href: "#work/food/7" }, // TINM Delicious Pink Campaign
+      { src: photo2, shape: "tall", href: "#work/art/1" }, // Funeral of Autumn
     ],
     [
-      { src: photo3, shape: "tall" },
-      { src: photo4, shape: "short" },
+      { src: photo3, shape: "tall", href: "#work/food/6" }, // Jelly Shells for TINM
+      { src: photo4, shape: "short", href: "#work/art/2" }, // Disruptors of Days
     ],
     [
-      { src: photo5, shape: "short" },
-      { src: photo6, shape: "tall" },
+      { src: photo5, shape: "short", href: "#work/food/8" }, // Ana Rosa x TIM
+      { src: photo6, shape: "tall", href: "#work/food/5" }, // Oyster Mountain
     ],
   ];
 
@@ -36,7 +38,16 @@
     <div class="photo-grid__col">
       {#each col as t}
         <div class="photo-grid__tile photo-grid__tile--{t.shape}">
-          {#if t.src}
+          {#if t.src && t.href}
+            <a
+              class="photo-grid__link"
+              href={t.href}
+              aria-label={t.alt || "Open project"}
+              on:click|stopPropagation
+            >
+              <img src={t.src} alt={t.alt ?? ""} loading="lazy" />
+            </a>
+          {:else if t.src}
             <img src={t.src} alt={t.alt ?? ""} loading="lazy" />
           {:else}
             <div class="photo-grid__placeholder" style="background: {t.color}"></div>
@@ -64,6 +75,8 @@
     width: 100%;
     border-radius: 8px;
     overflow: hidden;
+    /* keeps the rounded clip crisp in Safari while the image scales */
+    isolation: isolate;
   }
 
   .photo-grid__tile--short {
@@ -79,6 +92,18 @@
     height: 100%;
     object-fit: cover;
     display: block;
+    transition: var(--hover-zoom-transition);
+    will-change: transform;
+  }
+
+  .photo-grid__tile:hover img {
+    transform: scale(var(--hover-zoom-scale));
+  }
+
+  .photo-grid__link {
+    display: block;
+    width: 100%;
+    height: 100%;
   }
 
   .photo-grid__placeholder {

@@ -9,6 +9,9 @@
   --font-body: 'Poppins', sans-serif;
   --transition-slow: 0.8s cubic-bezier(0.77, 0, 0.175, 1);
   --page-gutter: clamp(24px, 5vw, 80px);
+  /* Image hover zoom — same effect as Food Art / Food Design cards */
+  --hover-zoom-scale: 1.15;
+  --hover-zoom-transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
 *, *::before, *::after {

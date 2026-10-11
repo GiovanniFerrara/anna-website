@@ -4,40 +4,39 @@
 
   const services = [
     {
-      key: "WD",
-      name: "Web Design",
+      key: "AC",
+      name: ["Art", "Commissions"],
       content: [
-        "Creative and intuitive UI/UX",
-        "Responsive design optimized for mobile, desktop, and tablet",
-        "Latest design practices",
+        "Site-specific installations and performances",
+        "For galleries, institutions and festivals",
+        "Open to residencies and collaborations",
       ],
     },
     {
-      key: "IP",
-      name: "Individual Projects",
+      key: "EI",
+      name: ["Edible", "Installations"],
       content: [
-        "Campaigns for Google Ads and Social Media",
-        "Content design with engaging posts and visuals",
-        "Label Design",
-        "High-quality images tailored to your needs",
+        "Food as sculpture your guests can eat",
+        "For openings, launches and private events",
+        "From concept to setup, catering included",
       ],
     },
     {
-      key: "AP",
-      name: "Brand Identification",
+      key: "DP",
+      name: ["Immersive", "Dinners"],
       content: [
-        "Visual Communication Strategy",
-        "Unique and memorable logo design",
-        "Banners & Newsletters",
-        "Google Ads - targeted and effective advertising",
+        "Staged dinners and performative tastings",
+        "Participatory formats built around the table",
+        "For festivals, galleries and private hosts",
       ],
     },
     {
-      key: "A",
-      name: "Brand Audit",
+      key: "SD",
+      name: ["Set Design", "Art Direction"],
       content: [
-        "Website Improvement by enhancing user experience and functionality",
-        "Marketing Strategies with data-driven strategies to boost your brand",
+        "Food styling and sets for campaigns",
+        "Photo and video shoots, product launches",
+        "Visual concepts built with edible material",
       ],
     },
   ];
@@ -55,7 +54,7 @@
     </div>
     <div class="services2__row">
       <div class="services2__left-column">
-        <h2 class="services2__left-column-title">Check what you need</h2>
+        <h2 class="services2__left-column-title">On the menu:</h2>
         <img
           on:click={goContacts}
           on:keydown={(e) => e.key === "Enter" && goContacts()}
@@ -72,7 +71,9 @@
             <div class="serviceCard2-wrap" key={service.key}>
               <div class="serviceCard2__inner">
                 <div class="serviceCard2__inner-wrap">
-                  <p class="serviceCard2__inner-title">{service.name}</p>
+                  <p class="serviceCard2__inner-title">
+                    {#each service.name as line}<span>{line}</span>{/each}
+                  </p>
                   <ul class="serviceCard2__inner-list">
                     {#each service.content as item}
                       <li class="serviceCard2__inner-item">{item}</li>
@@ -92,7 +93,9 @@
   /* ── Copied from ineedanicewebsite branch=anna _services2.sass ── */
   .services2 {
     background-color: #faf7f0;
-    padding: 10rem var(--page-gutter) calc(10rem - 13px);
+    /* top padding tuned so the SERVICES sign sits ~73px below the line above,
+       same rhythm as the Work section */
+    padding: 8.5rem var(--page-gutter) calc(10rem - 13px);
     margin-top: 0;
     position: relative;
   }
@@ -187,11 +190,17 @@
   .serviceCard2__inner-title {
     font-weight: 600;
     font-size: calc(2.6rem * 1.2);
-    width: 40px;
+    width: auto;
     height: 90px;
     padding: 10px;
     line-height: 1.1em;
     margin: 0;
+  }
+
+  /* one title line per entry in service.name */
+  .serviceCard2__inner-title span {
+    display: block;
+    white-space: nowrap;
   }
 
   .serviceCard2__inner-list {

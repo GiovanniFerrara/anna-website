@@ -25,7 +25,7 @@
   </div>
 
   <div class="footer__right">
-    <p class="footer__item footer__item--right">Contact us:</p>
+    <p class="footer__item footer__item--right">Contact:</p>
     <p class="footer__item footer__item--right">hora.anna@gmail.com</p>
     <p class="footer__item footer__item--right">+48 697 975 665</p>
   </div>
