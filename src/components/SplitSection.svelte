@@ -143,26 +143,15 @@
       width: 100%;
       height: auto;
     }
-    .split__side--art {
-      aspect-ratio: 870 / 1280;
-    }
+    /* 870x1280 box made with padding instead of aspect-ratio (Safari) */
+    .split__side--art,
     .split__side--food {
-      aspect-ratio: 870 / 1280;
+      height: 0;
+      padding-top: 147%;
     }
     .split__side::before {
       background-size: cover;
       background-position: center;
-    }
-  }
-
-  /* Older phones/browsers without aspect-ratio support */
-  @supports not (aspect-ratio: 1 / 1) {
-    @media (max-width: 768px) {
-      .split__side--art,
-      .split__side--food {
-        height: 0;
-        padding-top: 147%;
-      }
     }
   }
 </style>
