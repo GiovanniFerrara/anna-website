@@ -4,7 +4,7 @@
   import artCover1 from "../assets/art-candles-1.jpg";
   import artCover2 from "../assets/art-fear-7.jpg";
   import artCover3 from "../assets/art-conflict-1.jpg";
-  import { foodDesignProjects, foodArtExtraProjects, descriptions } from "../lib/foodDesignProjects";
+  import { foodDesignProjects, foodArtExtraProjects, descriptions, categories } from "../lib/foodDesignProjects";
   export let category: "art" | "food";
   const dispatch = createEventDispatcher();
 
@@ -13,18 +13,21 @@
       id: 1,
       title: "Funeral of Autumn",
       desc: descriptions["Funeral of Autumn"],
+      category: categories["Funeral of Autumn"],
       thumb: artCover1,
     },
     {
       id: 2,
       title: "Disruptors of Days",
       desc: descriptions["Disruptors of Days"],
+      category: categories["Disruptors of Days"],
       thumb: artCover2,
     },
     {
       id: 3,
       title: "Taste of Conflict",
       desc: descriptions["Taste of Conflict"],
+      category: categories["Taste of Conflict"],
       thumb: artCover3,
     },
     ...foodArtExtraProjects,
@@ -52,10 +55,14 @@
             src={project.thumb}
             alt={project.title}
             class="grid-item__img"
+            style="object-position: {('coverPosition' in project && project.coverPosition) || 'center'}"
             loading="lazy"
           />
         </div>
         <h3 class="grid-item__title">{project.title}</h3>
+        {#if "category" in project && project.category}
+          <p class="grid-item__category">{project.category}</p>
+        {/if}
         <p class="grid-item__desc">{project.desc}</p>
       </button>
     {/each}
@@ -123,6 +130,16 @@
     color: #000;
     margin: 0.5rem 0 0;
     line-height: 1.2;
+  }
+
+  .grid-item__category {
+    font-family: "Poppins", sans-serif;
+    font-size: 1.1rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: #000;
+    margin: 0;
   }
 
   .grid-item__desc {

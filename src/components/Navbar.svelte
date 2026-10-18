@@ -100,16 +100,15 @@
     >
       <img src="/instagram.svg" alt="Instagram" />
     </a>
-    <a
-      href="https://www.linkedin.com/in/anna-hora-59a9151a3/"
-      target="_blank"
-      rel="noopener"
+    <!-- LinkedIn link disabled for now (old link: https://www.linkedin.com/in/anna-hora-59a9151a3/).
+         To re-enable: turn this <span> back into <a href="NEW LINK" target="_blank" rel="noopener"> -->
+    <span
       aria-label="LinkedIn"
       class="social-icons__item"
       class:navbar--active={active}
     >
       <img src="/linkedin.svg" alt="LinkedIn" />
-    </a>
+    </span>
   </div>
 
   <!-- Page list -->
@@ -288,10 +287,10 @@
     opacity: 0.5 !important;
   }
   .page-list__item.is-active {
-    color: #2b6bac;
+    color: var(--color-accent);
   }
   .menu__item.is-active {
-    color: #2b6bac;
+    color: var(--color-accent);
   }
 
   /* icon / burger */
@@ -349,7 +348,7 @@
   }
 
   .menu-icon:hover .bar {
-    background-color: rgb(43, 107, 172);
+    background-color: var(--color-accent);
   }
 
   /* ── OVERLAY MENU ── */

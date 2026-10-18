@@ -12,8 +12,11 @@
   $: curtain1Left = windowWidth > 768 ? -scrollY / 1.05 : -scrollY / 3;
   $: curtain2Left = scrollY / 6;
   // subtitle: starts invisible, grows to 10rem and descends as user scrolls to 500
-  $: subtitleFontSizeRem = 10 * Math.min(1, Math.max(0, scrollY / 500));
-  $: subtitleTranslateY = scrollY * 0.6;
+  // on phones the line grows less and moves less, so it stays fully on screen
+  $: isMobile = windowWidth > 0 && windowWidth <= 768;
+  $: subtitleFontSizeRem =
+    (isMobile ? 5 : 10) * Math.min(1, Math.max(0, scrollY / 500));
+  $: subtitleTranslateY = scrollY * (isMobile ? 0.3 : 0.6);
 </script>
 
 <svelte:window bind:scrollY bind:innerWidth={windowWidth} />

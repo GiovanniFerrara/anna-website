@@ -7,19 +7,28 @@ const photos = import.meta.glob<string>("../assets/food-{design,art}/*/*.jpg", {
 });
 
 export const descriptions: Record<string, string> = {
-  "Hotel Amour": "A dinner at Hotel Amour: blue jelly landscapes, oysters and scallop shells turn the long table into a seabed.",
-  "Funeral of Summer Dinner": "An outdoor feast to see the season off, with shell-marked breads resting on fig leaves and white lace.",
-  "Winnice": "A garden table where bread, carrots and pomegranates radiate like suns between glasses of wine.",
-  "Christmas": "Christmas reimagined: herb trees, bread candles and wreaths of tomato and mozzarella tied with black ribbon.",
-  "Oyster Mountain": "Oyster shells stacked into a small mountain, each one holding a black pearl, set on lace and silver.",
-  "Jelly Shells for TINM": "Deep pink jelly set inside scallop and oyster shells, served on silver trays and white lace.",
-  "TINM Delicious Pink Campaign": "A pink campaign shot in the garden: a layered sweet on a silver tray, a red beaded bag and a pink blouse.",
-  "Ana Rosa x TIM": "A still life menu of cheese cut into shapes, skewers and a stone-like cake, staged with silver and dried flowers.",
-  "Funeral of Summer": "A white-draped table in the garden, crowned with grapes, candelabra and bougainvillea, to mourn the end of summer.",
-  "Food for Peace": "Ceasefire spelled in oranges, peace flags and bread rings played as tic-tac-toe: food as a message of peace.",
-  "Funeral of Autumn": "A candlelit ritual to bid farewell to autumn, around a long table glowing in the dark.",
-  "Disruptors of Days": "Words written in food on rocks, walls and tablecloths (fear, what if, no): the thoughts that interrupt a day.",
-  "Taste of Conflict": "A series exploring conflict through food, and through the gestures of sharing it.",
+  "“Hotel Amour”, Paris": "Inspired by its sea-themed room, a private dinner at Hotel Amour where jelly landscapes turned the long table into a playful seabed.",
+  "“Funeral of Summer” Dinner": "An outdoor feast celebrating Sicily's land and sea: fresh mussels, local produce and seashells hidden in dishes.",
+  "Moldavian Orange Wine Event": "An orange-themed dinner for an orange wine launch at Winnice Moldawii, Warsaw, with a menu designed to draw out the flavours of their special wines.",
+  "Edible Christmas Table": "Christmas catering reimagined: edible herb trees, bread candles and caprese wreaths tied with black ribbon.",
+  "Edible Sculpture “Oyster Mountain”": "An oyster tower with a twist: each shell hides a rose-orange jelly and a fruit pearl, a sweet surprise for events.",
+  "Press Day for There Is No More": "Lunch catering for a sustainable accessories brand's new collection: pink jelly set in shells on silver and lace.",
+  "Set Design for There Is No More Campaign": "For There Is No More's Delicious Pink campaign, an edible set where food and fashion share the same colour palette.",
+  "Interactive Birthday Catering, Paris": "Playful catering for a private birthday in Paris, where every dish invites guests to touch, play and find an edible surprise.",
+  "Funeral of Summer": "A ritual of time's passage through food: pausing, honoring the season, and connecting in the present moment.",
+  "Food for Peace": "Turning everyday ingredients into a visual language of protest and hope.",
+  "Funeral of Autumn": "A ritual of time's passage through food: pausing, honoring the season, and connecting in the present moment.",
+  "Disruptors of Days": "Series placing the unspeakable inside the ordinary. The thoughts that interrupt our days.",
+  "Taste of Conflict": "Exploring the intersection of history and survival through the same soup eaten in the different zones of wars.",
+};
+
+// Food Art: kind of work, shown above the description
+export const categories: Record<string, string> = {
+  "Funeral of Autumn": "Performance and installation",
+  "Taste of Conflict": "Performance and installation",
+  "Disruptors of Days": "Photography of installation",
+  "Food for Peace": "Site-specific intervention",
+  "Funeral of Summer": "Performance and installation",
 };
 
 type Tile = { src: string; alt?: string; shape: "short" | "tall" };
@@ -45,21 +54,24 @@ function cols(slug: string, title: string, dir = "food-design"): Tile[][] {
 }
 
 const list = [
-  { slug: "hotel-amour", title: "Hotel Amour" },
-  { slug: "funeral-of-summer-dinner", title: "Funeral of Summer Dinner" },
-  { slug: "winnice", title: "Winnice" },
-  { slug: "christmas", title: "Christmas" },
-  { slug: "oyster-mountain", title: "Oyster Mountain" },
-  { slug: "jelly-shells-tinm", title: "Jelly Shells for TINM" },
-  { slug: "tinm-pink-campaign", title: "TINM Delicious Pink Campaign" },
-  { slug: "ana-rosa-x-tim", title: "Ana Rosa x TIM" },
+  { slug: "hotel-amour", title: "“Hotel Amour”, Paris" },
+  { slug: "funeral-of-summer-dinner", title: "“Funeral of Summer” Dinner" },
+  { slug: "winnice", title: "Moldavian Orange Wine Event" },
+  { slug: "christmas", title: "Edible Christmas Table", cover: 3, coverPosition: "center 34%" },
+  { slug: "oyster-mountain", title: "Edible Sculpture “Oyster Mountain”" },
+  { slug: "jelly-shells-tinm", title: "Press Day for There Is No More", cover: 5 },
+  { slug: "tinm-pink-campaign", title: "Set Design for There Is No More Campaign", cover: 5 },
+  { slug: "ana-rosa-x-tim", title: "Interactive Birthday Catering, Paris" },
 ];
 
 export const foodDesignProjects = list.map((p, i) => ({
   id: i + 1,
   title: p.title,
   desc: descriptions[p.title] ?? "",
-  thumb: photo(p.slug, 1),
+  // cover photo on the Work page: grid position 1-6 (default 1, top left)
+  thumb: photo(p.slug, ("cover" in p && p.cover) || 1),
+  // which part of the cover stays visible when it is cropped (CSS object-position)
+  coverPosition: ("coverPosition" in p && p.coverPosition) || "center",
   cols: cols(p.slug, p.title),
 }));
 
@@ -74,6 +86,7 @@ export const foodArtExtraProjects = artList.map((p) => ({
   id: p.id,
   title: p.title,
   desc: descriptions[p.title] ?? "",
+  category: categories[p.title],
   thumb: photo(p.slug, 1, "food-art"),
   cols: cols(p.slug, p.title, "food-art"),
 }));

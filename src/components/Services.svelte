@@ -41,6 +41,23 @@
     },
   ];
 
+  // Swipe arrows (tablet/phone): show which way there are more cards
+  let track: HTMLDivElement;
+  let atStart = true;
+  let atEnd = false;
+
+  function updateArrows() {
+    if (!track) return;
+    atStart = track.scrollLeft <= 4;
+    atEnd = track.scrollLeft + track.clientWidth >= track.scrollWidth - 4;
+  }
+
+  function slide(dir: 1 | -1) {
+    const card = track?.querySelector(".serviceCard2-wrap") as HTMLElement | null;
+    const step = card ? card.offsetWidth : track.clientWidth * 0.8;
+    track.scrollBy({ left: dir * step, behavior: "smooth" });
+  }
+
   function goContacts() {
     dispatch("contacts");
     document.getElementById("contacts")?.scrollIntoView({ behavior: "smooth" });
@@ -66,7 +83,23 @@
         />
       </div>
       <div class="services2__slider">
-        <div class="serviceCard2">
+        {#if !atStart}
+          <button
+            type="button"
+            class="services2__arrow services2__arrow--left"
+            aria-label="Previous service"
+            on:click={() => slide(-1)}>&larr;</button
+          >
+        {/if}
+        {#if !atEnd}
+          <button
+            type="button"
+            class="services2__arrow services2__arrow--right"
+            aria-label="Next service"
+            on:click={() => slide(1)}>&rarr;</button
+          >
+        {/if}
+        <div class="serviceCard2" bind:this={track} on:scroll={updateArrows}>
           {#each services as service}
             <div class="serviceCard2-wrap" key={service.key}>
               <div class="serviceCard2__inner">
@@ -154,6 +187,12 @@
   .services2__slider {
     flex: 0 0 83.33%; /* lg=10/12 */
     display: flex;
+    position: relative;
+  }
+
+  /* swipe arrows: only on smaller screens, where the cards scroll sideways */
+  .services2__arrow {
+    display: none;
   }
 
   /* ── Copied from _serviceCard2.sass ── */
@@ -260,6 +299,42 @@
     .serviceCard2 {
       overflow-x: auto;
       scroll-snap-type: x mandatory;
+      /* hide the grey scrollbar, the arrows replace it */
+      scrollbar-width: none;
+    }
+    .serviceCard2::-webkit-scrollbar {
+      display: none;
+    }
+    .services2__arrow {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: absolute;
+      top: 50%;
+      z-index: 5;
+      width: 48px;
+      height: 48px;
+      margin-top: -24px;
+      border: 2px solid #000;
+      border-radius: 50%;
+      background: var(--color-accent);
+      color: #000;
+      font-size: 2.6rem;
+      line-height: 1;
+      padding: 0 0 3px;
+      cursor: pointer;
+      box-shadow: -1px 1.5px 0 #000;
+    }
+    .services2__arrow--right {
+      right: 6px;
+      animation: services-nudge 1.6s ease-in-out infinite;
+    }
+    .services2__arrow--left {
+      left: 6px;
+    }
+    @keyframes services-nudge {
+      0%, 100% { transform: translateX(0); }
+      50% { transform: translateX(5px); }
     }
     .serviceCard2-wrap {
       flex: 0 0 50%;

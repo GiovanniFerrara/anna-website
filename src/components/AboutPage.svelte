@@ -13,10 +13,10 @@
     <hr class="about__divider about__divider--main" />
     <div class="about__text">
       <p>
-        Anna Hora is a Polish artist and food designer based between Paris and Warsaw, working internationally. She works with food as her creative material, creating installations, performances and edible events for galleries, festivals and brands.
+        Anna Hora is a Polish <strong>artist</strong> and <strong>food designer</strong> based between Paris and Warsaw, working internationally. She works with food as her creative material, creating installations, performances and edible events for galleries, festivals and brands.
       </p>
       <p>
-        She explores life through food. In her work, food becomes a total medium, at once material and language: intimate and collective, private and political - insisting on the visibility of the kitchen as an undervalued space of human connection.
+        She explores life through food. In her work, food becomes a <strong>total medium</strong>, at once material and language: intimate and collective, private and political - insisting on the visibility of the kitchen as an undervalued space of human connection.
       </p>
       <p>
         She is drawn to the things we stop noticing: the kitchen, the work that happens there, and what a meal quietly says about the moment we live in. What ends up on the menu is never random. It carries memory and emotions, but mostly, it brings people to the table.
@@ -25,7 +25,7 @@
         And yet the table is also a place of celebration. Of people gathering around and choosing to be together.
       </p>
       <p>
-        Her work insists on one simple fact: human connection is never abstract. It often happens between physical bodies, and often because of a shared meal. Whether in a gallery or at a catered event, she brings the same attention to what food sparks between people.
+        Her work insists on one simple fact: <strong>human connection is never abstract</strong>. It often happens between physical bodies, and often because of a shared meal. Whether in a gallery or at a catered event, she brings the same attention to what food sparks between people.
       </p>
     </div>
   </div>
