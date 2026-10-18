@@ -88,7 +88,9 @@
     font-size: clamp(3rem, 4.5vw, 5rem);
     letter-spacing: 0.02em;
     padding: 0 0.4em;
-    top: -7px;
+    /* keep the label vertically centred on the line at every font size
+       (line sits at 55% of 4rem = 2.2rem; 0.58em = centre of the caps) */
+    top: calc(2.2rem - 0.58em);
   }
 
   .split__side {
