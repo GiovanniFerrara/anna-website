@@ -152,4 +152,15 @@
       background-position: center;
     }
   }
+
+  /* Older phones/browsers without aspect-ratio support */
+  @supports not (aspect-ratio: 1 / 1) {
+    @media (max-width: 768px) {
+      .split__side--art,
+      .split__side--food {
+        height: 0;
+        padding-top: 147%;
+      }
+    }
+  }
 </style>

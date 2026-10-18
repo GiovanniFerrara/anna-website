@@ -87,6 +87,28 @@
     aspect-ratio: 3 / 4;
   }
 
+  /* Older browsers without aspect-ratio support (desktop layout) */
+  @supports not (aspect-ratio: 1 / 1) {
+    @media (min-width: 769px) {
+      .photo-grid__tile {
+        position: relative;
+        height: 0;
+      }
+      .photo-grid__tile--short {
+        padding-top: 66.67%;
+      }
+      .photo-grid__tile--tall {
+        padding-top: 133.33%;
+      }
+      .photo-grid__tile img,
+      .photo-grid__link {
+        position: absolute;
+        top: 0;
+        left: 0;
+      }
+    }
+  }
+
   .photo-grid__tile img {
     width: 100%;
     height: 100%;

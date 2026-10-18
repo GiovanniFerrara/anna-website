@@ -106,6 +106,7 @@
   }
 
   .grid-item__img-wrap {
+    position: relative;
     overflow: hidden;
     aspect-ratio: 4/3;
     border-radius: 12px;
@@ -121,6 +122,20 @@
 
   .grid-item:hover .grid-item__img {
     transform: scale(1.04);
+  }
+
+  /* Older phones/browsers without aspect-ratio support: keep the 4:3 box
+     with the padding trick, otherwise the photo box collapses to 0 height */
+  @supports not (aspect-ratio: 1 / 1) {
+    .grid-item__img-wrap {
+      height: 0;
+      padding-top: 75%;
+    }
+    .grid-item__img {
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
   }
 
   .grid-item__title {
