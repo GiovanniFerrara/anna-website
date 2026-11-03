@@ -58,4 +58,22 @@
   .work-page {
     padding-top: 10rem;
   }
+
+  /* Mobile: one spacing unit (--u) between burger bars, FOOD ART title,
+     description and photo (see SplitSection). 39px = bottom of burger bars,
+     12px = space above the title caps inside the divider box. */
+  @media (max-width: 768px) {
+    .work-page {
+      --u: 32px;
+      padding-top: calc(39px + var(--u) - 12px);
+    }
+    /* last FOOD DESIGN project text -> FOOD ART title caps = 1.25 × --u (same as below the title)
+       (~5px below the text baseline + ~5px above the title caps) */
+    #food-design :global(.grid-section) {
+      padding-bottom: 0;
+    }
+    #food-art :global(.grid-section) {
+      padding-top: calc(var(--u) * 1.25 - 10px);
+    }
+  }
 </style>

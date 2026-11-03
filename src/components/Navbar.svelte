@@ -436,8 +436,34 @@
   }
 
   @media (max-width: 600px) {
-    .page-list {
+    .page-list,
+    .langSwap,
+    .nav-spacer {
       display: none;
+    }
+    /* Icons packed to the right: [Instagram] [LinkedIn] [burger], same gap.
+       The img has 7px padding each side, so the visual gap between the two
+       icons is --icon-gap + 14px; the burger bars have no padding, so its
+       margin is --icon-gap + 7px to match. */
+    .navbar {
+      --icon-gap: 4px;
+      justify-content: flex-end;
+    }
+    .social-icons {
+      flex: none;
+      margin: auto 0;
+      gap: var(--icon-gap);
+      justify-content: flex-end;
+    }
+    .social-icons__item {
+      margin-left: 0;
+    }
+    .icon {
+      flex: none;
+      margin-left: calc(var(--icon-gap) + 10px);
+    }
+    .menu-icon {
+      min-width: 50px;
     }
     .menu {
       padding: 60px 32px;

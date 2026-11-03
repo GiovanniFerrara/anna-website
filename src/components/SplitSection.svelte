@@ -136,7 +136,18 @@
     .split {
       flex-direction: column;
       height: auto;
-      gap: 3rem;
+      /* photo -> next title caps = 1.5 × --u: a bit more air than the gaps
+         inside a block, so FOOD DESIGN reads as a new section
+         (12px of the divider box is above the caps) */
+      gap: calc(var(--u, 32px) * 1.5 - 12px);
+      margin-top: 0;
+    }
+    /* title cap-bottom -> text -> photo all use the same unit (--u).
+       Offsets compensate for the empty space inside the divider box (13px)
+       and the text line-height leading (5px) so the visible gaps are equal. */
+    .split__desc {
+      min-height: 0;
+      margin: calc(var(--u, 32px) - 13px) 0 calc(var(--u, 32px) - 5px);
     }
     .split__side {
       flex: none;

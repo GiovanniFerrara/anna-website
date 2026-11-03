@@ -170,4 +170,16 @@
       --cols: 1;
     }
   }
+
+  /* Mobile: spacing unit --u (set on .work-page). Title caps -> first photo
+     is 1.25 × --u, same as the space above the FOOD ART title. The 26px divider box
+     has ~5px empty above the caps and ~3px below. */
+  @media (max-width: 768px) {
+    .grid-section {
+      padding-top: calc(var(--u, 32px) - 5px);
+    }
+    .grid-section__header {
+      margin-bottom: calc(var(--u, 32px) * 1.25 - 3px);
+    }
+  }
 </style>
