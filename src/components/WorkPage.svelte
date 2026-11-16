@@ -59,6 +59,21 @@
     padding-top: 10rem;
   }
 
+  /* last FOOD DESIGN project text -> FOOD ART title: same space as
+     FOOD ART title -> photos (40px), instead of two section paddings added up */
+  #food-design :global(.grid-section) {
+    padding-bottom: 0;
+  }
+  #food-art :global(.grid-section) {
+    padding-top: 4rem;
+  }
+  /* keep the old 60px above the title when the "Food Art" button scrolls here */
+  @media (min-width: 769px) {
+    #food-art {
+      scroll-margin-top: 2rem;
+    }
+  }
+
   /* Mobile: one spacing unit (--u) between burger bars, FOOD ART title,
      description and photo (see SplitSection). 39px = bottom of burger bars,
      12px = space above the title caps inside the divider box. */
