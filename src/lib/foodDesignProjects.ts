@@ -61,13 +61,13 @@ function cols(slug: string, title: string, dir = "food-design"): Tile[][] {
 const list = [
   { slug: "hotel-amour", title: "“Hotel Amour”, Paris" },
   { slug: "funeral-of-summer-dinner", title: "“Funeral of Summer” Dinner" },
-  { slug: "winnice", title: "Moldavian Orange Wine Event" },
+  { slug: "night-blooming-art-party", title: "Night-Blooming Art Party" },
   { slug: "christmas", title: "Edible Christmas Table", cover: 3, coverPosition: "center 34%" },
   { slug: "oyster-mountain", title: "Edible Sculpture “Oyster Mountain”" },
   { slug: "jelly-shells-tinm", title: "Press Day for There Is No More", cover: 5 },
   { slug: "tinm-pink-campaign", title: "Set Design for There Is No More Campaign", cover: 5 },
   { slug: "ana-rosa-x-tim", title: "Interactive Birthday Catering, Paris" },
-  { slug: "night-blooming-art-party", title: "Night-Blooming Art Party" },
+  { slug: "winnice", title: "Moldavian Orange Wine Event" },
 ];
 
 export const foodDesignProjects = list.map((p, i) => ({
