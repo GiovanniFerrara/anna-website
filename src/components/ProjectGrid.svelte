@@ -8,7 +8,11 @@
   export let category: "art" | "food";
   const dispatch = createEventDispatcher();
 
-  const artProjects = [
+  // Order of the Food Art cards on the Work page, by project id
+  // (ids stay fixed so links like #work/art/1 keep working).
+  const ART_ORDER = [6, 3, 1, 7, 4, 2, 5];
+
+  const allArtProjects = [
     {
       id: 1,
       title: "Funeral of Autumn",
@@ -32,6 +36,7 @@
     },
     ...foodArtExtraProjects,
   ];
+  const artProjects = ART_ORDER.map((id) => allArtProjects.find((p) => p.id === id)!);
 
   const foodProjects = foodDesignProjects;
 
