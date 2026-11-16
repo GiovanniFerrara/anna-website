@@ -25,6 +25,11 @@ export const descriptions: Record<string, string> = {
   "Self Service Soul Station": "An immersive, participative installation inviting each visitor to an edible, private, and symbolic gesture.",
 };
 
+// Where the project took place, shown under the description with a 📍 pin
+export const places: Record<string, string> = {
+  "Self Service Soul Station": "Théâtre des Sablons, Alain Prévost’s Maison",
+};
+
 // Food Art: kind of work, shown above the description
 export const categories: Record<string, string> = {
   "Funeral of Autumn": "Performance and installation",
