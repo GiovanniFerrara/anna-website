@@ -20,6 +20,9 @@ export const descriptions: Record<string, string> = {
   "Funeral of Autumn": "A ritual of time's passage through food: pausing, honoring the season, and connecting in the present moment.",
   "Disruptors of Days": "Series placing the unspeakable inside the ordinary. The thoughts that interrupt our days.",
   "Taste of Conflict": "Exploring the intersection of history and survival through the same soup eaten in the different zones of wars.",
+  "Night-Blooming Art Party": "Dinner during the Ar(T) Chipel festival x Centre Pompidou at Alain Prévost’s house, translating the story of a maison into an edible and visual language.",
+  "The Path of Life (Runs Through the Kitchen)": "Inspired by traditional Mexican altars, the installation highlights food not only as a fundamental part of daily life, but also as a carrier of cultural memory, tradition and collective identity.",
+  "Self Service Soul Station": "An immersive, participative installation inviting each visitor to an edible, private, and symbolic gesture.",
 };
 
 // Food Art: kind of work, shown above the description
@@ -28,6 +31,8 @@ export const categories: Record<string, string> = {
   "Taste of Conflict": "Performance and installation",
   "Disruptors of Days": "Photography of installation",
   "Food for Peace": "Site-specific intervention",
+  "The Path of Life (Runs Through the Kitchen)": "Installation / Sculpture",
+  "Self Service Soul Station": "Immersive installation",
   "Funeral of Summer": "Performance and installation",
 };
 
@@ -62,6 +67,7 @@ const list = [
   { slug: "jelly-shells-tinm", title: "Press Day for There Is No More", cover: 5 },
   { slug: "tinm-pink-campaign", title: "Set Design for There Is No More Campaign", cover: 5 },
   { slug: "ana-rosa-x-tim", title: "Interactive Birthday Catering, Paris" },
+  { slug: "night-blooming-art-party", title: "Night-Blooming Art Party" },
 ];
 
 export const foodDesignProjects = list.map((p, i) => ({
@@ -80,6 +86,8 @@ export const foodDesignProjects = list.map((p, i) => ({
 const artList = [
   { id: 4, slug: "funeral-of-summer", title: "Funeral of Summer" },
   { id: 5, slug: "food-for-peace", title: "Food for Peace" },
+  { id: 6, slug: "path-of-life", title: "The Path of Life (Runs Through the Kitchen)" },
+  { id: 7, slug: "self-service-soul-station", title: "Self Service Soul Station" },
 ];
 
 export const foodArtExtraProjects = artList.map((p) => ({
