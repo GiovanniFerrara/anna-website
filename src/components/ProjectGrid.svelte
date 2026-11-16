@@ -4,7 +4,7 @@
   import artCover1 from "../assets/art-candles-1.jpg";
   import artCover2 from "../assets/art-fear-7.jpg";
   import artCover3 from "../assets/art-conflict-1.jpg";
-  import { foodDesignProjects, foodArtExtraProjects, descriptions, categories, places } from "../lib/foodDesignProjects";
+  import { foodDesignProjects, foodArtExtraProjects, descriptions, categories } from "../lib/foodDesignProjects";
   export let category: "art" | "food";
   const dispatch = createEventDispatcher();
 
@@ -69,9 +69,6 @@
           <p class="grid-item__category">{project.category}</p>
         {/if}
         <p class="grid-item__desc">{project.desc}</p>
-        {#if places[project.title]}
-          <p class="grid-item__desc grid-item__place">📍 {places[project.title]}</p>
-        {/if}
       </button>
     {/each}
   </div>
@@ -165,10 +162,6 @@
     line-height: 1.5;
     color: #000;
     margin: 0;
-  }
-
-  .grid-item__place {
-    margin-top: 0.6rem;
   }
 
   @media (max-width: 992px) {
