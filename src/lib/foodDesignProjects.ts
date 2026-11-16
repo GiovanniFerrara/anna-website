@@ -20,7 +20,7 @@ export const descriptions: Record<string, string> = {
   "Funeral of Autumn": "A ritual of time's passage through food: pausing, honoring the season, and connecting in the present moment.",
   "Disruptors of Days": "Series placing the unspeakable inside the ordinary. The thoughts that interrupt our days.",
   "Taste of Conflict": "Exploring the intersection of history and survival through the same soup eaten in the different zones of wars.",
-  "Night-Blooming Art Party": "Dinner during the Ar(T) Chipel festival x Centre Pompidou at Alain Prévost’s house, translating the story of a maison into an edible and visual language.",
+  "Night-Blooming Art Party": "Dinner during the Ar(T]chipel festival x Centre Pompidou at Alain Prévost’s house, translating the story of a maison into an edible and visual language.",
   "The Path of Life (Runs Through the Kitchen)": "Inspired by traditional Mexican altars, the installation highlights food not only as a fundamental part of daily life, but also as a carrier of cultural memory, tradition and collective identity.",
   "Self Service Soul Station": "An immersive, participative installation inviting each visitor to an edible, private, and symbolic gesture.",
 };
