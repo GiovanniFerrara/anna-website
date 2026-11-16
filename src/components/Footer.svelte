@@ -13,7 +13,7 @@
 
     <div class="footer__item footer__item--left">
       <span />
-      <p on:click={() => document.getElementById('testimonials')?.scrollIntoView({ behavior: 'smooth' })}>Testimonials</p>
+      <p on:click={() => { location.hash = 'about'; window.scrollTo({ top: 0, behavior: 'auto' }); }}>Manifesto</p>
     </div>
   </div>
 
