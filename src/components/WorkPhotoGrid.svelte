@@ -2,7 +2,7 @@
   import photo1 from "../assets/home-page-photo-1.jpg";
   import photo2 from "../assets/home-page-photo-2.jpg";
   import photo3 from "../assets/home-page-photo-3.jpg";
-  import photo4 from "../assets/home-page-photo-4.jpg";
+  import photo4 from "../assets/food-art/self-service-soul-station/5.jpg"; // portfolio poziom (3), red glasses
   import photo5 from "../assets/home-page-photo-5.jpg";
   import photo6 from "../assets/food-art/path-of-life/3.jpg"; // IMG_6949, the altar
 
@@ -22,7 +22,7 @@
     ],
     [
       { src: photo3, shape: "tall", href: "#work/food/6" }, // Jelly Shells for TINM
-      { src: photo4, shape: "short", href: "#work/art/2" }, // Disruptors of Days
+      { src: photo4, shape: "short", href: "#work/art/7" }, // Self Service Soul Station
     ],
     [
       { src: photo5, shape: "short", href: "#work/food/8" }, // Ana Rosa x TIM
