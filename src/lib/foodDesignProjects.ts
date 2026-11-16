@@ -22,7 +22,7 @@ export const descriptions: Record<string, string> = {
   "Taste of Conflict": "Exploring the intersection of history and survival through the same soup eaten in the different zones of wars. Presented at peace conferences at, among others, Sorbonne University and Paris-Est Créteil University.",
   "Night-Blooming Art Party": "Dinner during the Ar(T]chipel festival x Centre Pompidou at Alain Prévost’s house, translating the story of a maison into an edible and visual language.",
   "The Path of Life (Runs Through the Kitchen)": "Inspired by traditional Mexican altars, the installation highlights food not only as a fundamental part of daily life, but also as a carrier of cultural memory, tradition and collective identity.",
-  "Self Service Soul Station": "An immersive, participative installation inviting each visitor to an edible, private, and symbolic gesture. Presented at, among others, Théâtre des Sablons in Neuilly and the writer Alain Prévost’s maison.",
+  "Self Service Soul Station": "An immersive, participative installation inviting each visitor to an edible, private, and symbolic gesture. Presented at, among others, Théâtre des Sablons in Neuilly and the writer Alain Prévost’s Maison.",
 };
 
 // Food Art: kind of work, shown above the description
