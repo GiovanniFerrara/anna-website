@@ -4,7 +4,7 @@
   import photo3 from "../assets/home-page-photo-3.jpg";
   import photo4 from "../assets/home-page-photo-4.jpg";
   import photo5 from "../assets/home-page-photo-5.jpg";
-  import photo6 from "../assets/home-page-photo-6.jpg";
+  import photo6 from "../assets/food-art/path-of-life/3.jpg"; // IMG_6949, the altar
 
   type Tile = {
     color?: string;
@@ -26,7 +26,7 @@
     ],
     [
       { src: photo5, shape: "short", href: "#work/food/8" }, // Ana Rosa x TIM
-      { src: photo6, shape: "tall", href: "#work/food/5" }, // Oyster Mountain
+      { src: photo6, shape: "tall", href: "#work/art/6" }, // The Path of Life
     ],
   ];
 
